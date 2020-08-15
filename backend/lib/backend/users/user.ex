@@ -5,6 +5,7 @@ defmodule Backend.Users.User do
   schema "users" do
     field :img_url, :string
     field :username, :string
+    has_many :posts, Backend.Posts.Post
 
     timestamps()
   end
