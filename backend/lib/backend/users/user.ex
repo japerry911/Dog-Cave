@@ -6,6 +6,7 @@ defmodule Backend.Users.User do
     field :img_url, :string
     field :username, :string
     has_many :posts, Backend.Posts.Post
+    has_many :topics, Backend.Topics.Topic
 
     timestamps()
   end
