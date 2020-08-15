@@ -5,6 +5,7 @@ defmodule Backend.Topics.Topic do
   schema "topics" do
     field :title, :string
     belongs_to :user, Backend.Users.User
+    belongs_to :category, Backend.Categories.Category
 
     timestamps()
   end
