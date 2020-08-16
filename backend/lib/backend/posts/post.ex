@@ -6,6 +6,7 @@ defmodule Backend.Posts.Post do
     field :content, :string
     field :is_question, :boolean, default: false
     belongs_to :user, Backend.Users.User
+    belongs_to :topic, Backend.Topics.Topic
 
     timestamps()
   end

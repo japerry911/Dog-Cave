@@ -1,8 +1,8 @@
-defmodule Backend.Repo.Migrations.Add_Topic_To_Users do
+defmodule Backend.Repo.Migrations.AddTopicIdToPosts do
   use Ecto.Migration
 
   def change do
-    alter table(:users) do
+    alter table(:posts) do
       add :topic_id, references(:topics)
     end
   end

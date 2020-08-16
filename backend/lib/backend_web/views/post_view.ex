@@ -11,8 +11,11 @@ defmodule BackendWeb.PostView do
   end
 
   def render("post.json", %{post: post}) do
-    %{id: post.id,
+    %{
+      id: post.id,
       content: post.content,
-      is_question: post.is_question}
+      is_question: post.is_question,
+      user_id: post.user_id
+    }
   end
 end

@@ -18,7 +18,9 @@ defmodule Backend.Posts do
 
   """
   def list_posts do
-    Repo.all(Post)
+    Post
+    |> order_by(asc: :id)
+    |> Repo.all()
   end
 
   @doc """
