@@ -18,7 +18,10 @@ defmodule Backend.Categories do
 
   """
   def list_categories do
-    Repo.all(from c in Category, preload: [topics: [:id, :title]])
+    Category
+    |> order_by(asc: :id)
+    |> preload(:topics)
+    |> Repo.all()
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule Backend.Categories do
       ** (Ecto.NoResultsError)
 
   """
-  def get_category!(id), do: Repo.get!(Category, id)
+  def get_category!(id) do
+    Category
+    |> preload(:topics)
+    |> Repo.get!(id)
+  end
 
   @doc """
   Creates a category.
