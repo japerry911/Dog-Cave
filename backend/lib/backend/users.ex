@@ -18,7 +18,10 @@ defmodule Backend.Users do
 
   """
   def list_users do
-    Repo.all(User)
+    User
+    |> order_by(asc: :id)
+    |> preload([:topics, posts: [:topic]])
+    |> Repo.all()
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule Backend.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    User
+    |> preload([:topics, posts: [:topic]])
+    |> Repo.get!(id)
+  end
 
   @doc """
   Creates a user.

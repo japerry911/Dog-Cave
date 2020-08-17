@@ -14,7 +14,9 @@ defmodule BackendWeb.UserView do
     %{
       id: user.id,
       username: user.username,
-      img_url: user.img_url
+      img_url: user.img_url,
+      posts: user.posts,
+      topics: user.topics
     }
   end
 end
