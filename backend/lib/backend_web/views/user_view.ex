@@ -11,8 +11,10 @@ defmodule BackendWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
+    %{
+      id: user.id,
       username: user.username,
-      img_url: user.img_url}
+      img_url: user.img_url
+    }
   end
 end

@@ -20,6 +20,7 @@ defmodule Backend.Posts do
   def list_posts do
     Post
     |> order_by(asc: :id)
+    |> preload([:user, :topic])
     |> Repo.all()
   end
 

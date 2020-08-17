@@ -11,8 +11,11 @@ defmodule BackendWeb.CategoryView do
   end
 
   def render("category.json", %{category: category}) do
-    %{id: category.id,
+    %{
+      id: category.id,
       name: category.name,
-      description: category.description}
+      description: category.description,
+      topics: category.topics
+    }
   end
 end

@@ -2,6 +2,8 @@ defmodule Backend.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:username, :img_url]}
+
   schema "users" do
     field :img_url, :string
     field :username, :string

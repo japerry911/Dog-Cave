@@ -18,7 +18,7 @@ defmodule Backend.Categories do
 
   """
   def list_categories do
-    Repo.all(Category)
+    Repo.all(from c in Category, preload: [topics: [:id, :title]])
   end
 
   @doc """

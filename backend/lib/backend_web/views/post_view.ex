@@ -15,7 +15,8 @@ defmodule BackendWeb.PostView do
       id: post.id,
       content: post.content,
       is_question: post.is_question,
-      user_id: post.user_id
+      user: post.user,
+      topic: post.topic
     }
   end
 end
