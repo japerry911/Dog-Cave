@@ -18,7 +18,10 @@ defmodule Backend.Topics do
 
   """
   def list_topics do
-    Repo.all(Topic)
+    Topic
+    |> order_by(asc: :id)
+    |> preload([:user, :category])
+    |> Repo.all()
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule Backend.Topics do
       ** (Ecto.NoResultsError)
 
   """
-  def get_topic!(id), do: Repo.get!(Topic, id)
+  def get_topic!(id) do
+    Topic
+    |> preload([:user, :category])
+    |> Repo.get!(id)
+  end
 
   @doc """
   Creates a topic.

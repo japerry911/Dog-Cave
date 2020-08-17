@@ -18,7 +18,10 @@ defmodule Backend.Posts do
 
   """
   def list_posts do
-    Repo.all(Post)
+    Post
+    |> order_by(asc: :id)
+    |> preload([:user, :topic])
+    |> Repo.all()
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule Backend.Posts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+  def get_post!(id) do
+    Post
+    |> preload([:user, :topic])
+    |> Repo.get!(id)
+  end
 
   @doc """
   Creates a post.

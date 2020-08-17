@@ -2,6 +2,8 @@ defmodule Backend.Categories.Category do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:id, :name, :description]}
+
   schema "categories" do
     field :description, :string
     field :name, :string
