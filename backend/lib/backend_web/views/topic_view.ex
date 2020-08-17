@@ -11,7 +11,6 @@ defmodule BackendWeb.TopicView do
   end
 
   def render("topic.json", %{topic: topic}) do
-    %{id: topic.id,
-      title: topic.title}
+    %{id: topic.id, title: topic.title, user: topic.user, category: topic.category}
   end
 end
