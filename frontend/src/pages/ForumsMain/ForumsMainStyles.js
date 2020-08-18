@@ -54,4 +54,17 @@ export const useStyles = makeStyles((theme) => ({
   gridItemStyle: {
     flexBasis: "45%",
   },
+  dividerStyle: {
+    width: "90%",
+    height: "0.25rem",
+    backgroundColor: theme.colors.lightBlueGray,
+    marginTop: "0.25rem",
+  },
+  minFlexBasisStyle: {
+    flexBasis: "30%",
+  },
+  lightDividerStyle: {
+    width: "90%",
+    height: "0.125rem",
+  },
 }));
