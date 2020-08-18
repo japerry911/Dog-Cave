@@ -32,7 +32,7 @@ import_config "#{Mix.env()}.exs"
 
 config :backend, Backend.Mailer,
   adapter: Bamboo.SMTPAdapter,
-  address: "smtp.gmail.com",
+  server: "smtp.gmail.com",
   port: 587,
   username: System.get_env("SMTP_USERNAME"),
   password: System.get_env("SMTP_PASSWORD"),

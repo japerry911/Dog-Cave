@@ -12,6 +12,8 @@ defmodule BackendWeb.Router do
     resources "/posts", PostController, except: [:new, :edit]
     resources "/topics", TopicController, except: [:new, :edit]
     resources "/categories", CategoryController, except: [:new, :edit]
+
+    post "/contact/send-email", ContactController, :send_email
   end
 
   # Enables LiveDashboard only for development
