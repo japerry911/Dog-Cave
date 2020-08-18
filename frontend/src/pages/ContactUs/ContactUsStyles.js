@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   mainDivStyle: {
-    minHeight: "95rem",
+    minHeight: "100vh",
     width: "100%",
     backgroundColor: theme.palette.secondary.main,
     paddingBottom: "3rem",
@@ -29,26 +29,14 @@ export const useStyles = makeStyles((theme) => ({
     border: `3pt solid ${theme.palette.secondary.main}`,
     padding: "1rem 0",
     marginTop: "3rem",
-    height: "100%",
-    width: "60%",
+    height: "55rem",
+    width: "40%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    [theme.breakpoints.only("md")]: {
-      height: "100%",
-      width: "80%",
-    },
-    [theme.breakpoints.only("sm")]: {
-      height: "100%",
-      width: "90%",
-    },
-    [theme.breakpoints.only("xs")]: {
-      height: "92%",
-      width: "92%",
-    },
   },
   titleStyle: {
     fontWeight: "bold",

@@ -7,7 +7,7 @@ import ToastBar from "./components/ToastBar/ToastBar";
 
 function App() {
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <ThemeProvider theme={theme}>
         <header>
           <NavBar />
