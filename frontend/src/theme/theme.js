@@ -13,6 +13,7 @@ let theme = createMuiTheme({
     lightGray: "#d7dde0",
     lightBlueGray: "#758895",
     white: "#fff",
+    lightGray: "#b0bbc2",
   },
 });
 
