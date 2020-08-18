@@ -5,7 +5,7 @@ import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import ContactUs from "../pages/ContactUs/ContactUs";
-import Forum from "../pages/Forum/Forum";
+import ForumsMain from "../pages/ForumsMain/ForumsMain";
 import About from "../pages/About/About";
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
       <Route exact path="/sign-in" component={SignIn} />
       <Route exact path="/sign-up" component={SignUp} />
       <Route exact path="/contact-us" component={ContactUs} />
-      <Route exact path="/forum" component={Forum} />
+      <Route exact path="/forums" component={ForumsMain} />
       <Route exact path="/about" component={About} />
     </Fragment>
   );

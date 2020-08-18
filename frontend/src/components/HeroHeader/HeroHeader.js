@@ -3,8 +3,8 @@ import { useStyles } from "./HeroHeaderStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-const HeroHeader = ({ headerText, imgUrl, pushUp }) => {
-  const classes = useStyles({ imgUrl, pushUp });
+const HeroHeader = ({ headerText, imgUrl, pushUp, pushDown }) => {
+  const classes = useStyles({ imgUrl, pushUp, pushDown });
 
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} xl={12}>
