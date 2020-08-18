@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                       url('https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/Home/agreen-duhoki-7V_j2mFTJLQ-unsplash.jpg')`,
     backgroundSize: "cover",
-    minHeight: "100%",
+    minHeight: "100vh",
     backgroundPosition: "0 60%",
   },
   paperStyle: {
@@ -19,9 +19,6 @@ export const useStyles = makeStyles((theme) => ({
       width: "50%",
       padding: 0,
     },
-  },
-  headerTextStyle: {
-    color: theme.colors.white,
   },
   gridItemStyle: {
     display: "flex",
@@ -48,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
   buttonStyle: {
     backgroundColor: theme.palette.primary.main,
     border: `3pt solid ${theme.palette.secondary.main}`,
-    color: theme.palette.secondary.main,
+    color: theme.colors.white,
     width: "40%",
     borderRadius: 12,
     padding: "1rem",
