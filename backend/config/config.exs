@@ -13,10 +13,10 @@ config :backend,
 # Configures the endpoint
 config :backend, BackendWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "H2yVTGIVKHCqTrWl73WRoNuNPVTadGN0lCX9ZK2t6B9jdg4ylt+1w2paP8iWCPO/",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: BackendWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Backend.PubSub,
-  live_view: [signing_salt: "cdN0XKbh"]
+  live_view: [signing_salt: System.get_env("SALT")]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -29,3 +29,12 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :backend, Backend.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.gmail.com",
+  port: 587,
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  authentication: "plain",
+  enable_starttls_auto: true

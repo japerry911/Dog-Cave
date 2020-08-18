@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     backgroundSize: "cover",
     paddingBottom: "5em",
-    backgroundPosition: "0 82%",
+    backgroundPosition: (props) => (props.pushUp ? "0 82%" : "0 55%"),
     alignItems: "center",
     display: "flex",
   },

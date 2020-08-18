@@ -2,6 +2,7 @@ defmodule BackendWeb.Router do
   use BackendWeb, :router
 
   pipeline :api do
+    plug CORSPlug, origin: "http://localhost:3000"
     plug :accepts, ["json"]
   end
 
@@ -12,6 +13,8 @@ defmodule BackendWeb.Router do
     resources "/posts", PostController, except: [:new, :edit]
     resources "/topics", TopicController, except: [:new, :edit]
     resources "/categories", CategoryController, except: [:new, :edit]
+
+    post "/contact/send-email", ContactController, :send_email
   end
 
   # Enables LiveDashboard only for development
