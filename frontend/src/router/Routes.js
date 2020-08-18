@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import ForumsMain from "../pages/ForumsMain/ForumsMain";
 import About from "../pages/About/About";
+import ShowCategory from "../pages/ShowCategory/ShowCategory";
 
 export default () => {
   return (
@@ -18,6 +19,7 @@ export default () => {
       <Route exact path="/contact-us" component={ContactUs} />
       <Route exact path="/forums" component={ForumsMain} />
       <Route exact path="/about" component={About} />
+      <Route exact path="/forums/categories/:id" component={ShowCategory} />
     </Fragment>
   );
 };
