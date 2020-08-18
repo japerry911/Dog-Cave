@@ -38,3 +38,5 @@ config :backend, Backend.Mailer,
   password: System.get_env("SMTP_PASSWORD"),
   authentication: "plain",
   enable_starttls_auto: true
+
+Application.compile_env!(:backend, :SMTP_USERNAME)
