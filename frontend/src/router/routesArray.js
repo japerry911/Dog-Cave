@@ -8,6 +8,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 export const ROUTES_ARRAY = [
   { link: "/", title: "Home", icon: HomeIcon },
   { link: "/about", title: "About", icon: InfoIcon },
+  { link: "/contact-us", title: "Contact Us", icon: PhoneIcon },
   { link: "/forum", title: "Forum", icon: ForumIcon },
   { link: "/sign-in", title: "Sign In", icon: SupervisorAccountIcon },
   { link: "/sign-up", title: "Sign Up", icon: AddIcon },
