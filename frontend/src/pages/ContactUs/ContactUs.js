@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import HeroHeader from "../../components/HeroHeader/HeroHeader";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -10,6 +10,7 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import LoadingOverlay from "react-loading-overlay";
+import phoenixServer from "../../api/phoenixServer";
 import { useStyles } from "./ContactUsStyles";
 
 const ContactUs = () => {
@@ -19,6 +20,46 @@ const ContactUs = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [validationStatus, setValidationStatus] = useState(false);
+
+  useEffect(() => {
+    if (
+      // eslint-disable-next-line
+      !/([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(email)
+    ) {
+      setValidationStatus(false);
+      return;
+    }
+
+    if (subject === "") {
+      setValidationStatus(false);
+      return;
+    }
+
+    if (message === "") {
+      setValidationStatus(false);
+      return;
+    }
+
+    setValidationStatus(true);
+  }, [email, subject, message]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+
+    formData.set("email", email);
+    formData.set("subject", subject);
+    formData.set("message", message);
+
+    const result = await phoenixServer.post(
+      "/api/contact/send-email",
+      formData
+    );
+
+    console.log("Result: ", result);
+  };
 
   return (
     <Fragment>
@@ -57,7 +98,7 @@ const ContactUs = () => {
                   align="center"
                   justify="center"
                 >
-                  <form className={classes.formStyle}>
+                  <form className={classes.formStyle} onSubmit={onSubmit}>
                     <Grid
                       container
                       item
@@ -107,7 +148,6 @@ const ContactUs = () => {
                             onChange={(newSubject) =>
                               setSubject(newSubject.target.value)
                             }
-                            helperText="Password must contain an Uppercase letter, Lowercase letter, Number, and be at least 7 characters long"
                             value={subject}
                             className={classes.textFieldStyle}
                           />
@@ -151,7 +191,7 @@ const ContactUs = () => {
                         >
                           <Button
                             className={classes.buttonStyle}
-                            disabled={!(email && subject && message)}
+                            disabled={!validationStatus}
                             type="submit"
                           >
                             Send Message
