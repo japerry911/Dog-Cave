@@ -3,6 +3,7 @@ import Routes from "./router/Routes";
 import NavBar from "./components/NavBar/NavBar";
 import theme from "./theme/theme";
 import { ThemeProvider } from "@material-ui/core/styles";
+import ToastBar from "./components/ToastBar/ToastBar";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <main>
           <Routes />
         </main>
+        <ToastBar />
       </ThemeProvider>
     </div>
   );
