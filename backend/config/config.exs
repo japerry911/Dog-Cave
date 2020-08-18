@@ -13,10 +13,10 @@ config :backend,
 # Configures the endpoint
 config :backend, BackendWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "H2yVTGIVKHCqTrWl73WRoNuNPVTadGN0lCX9ZK2t6B9jdg4ylt+1w2paP8iWCPO/",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: BackendWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: Backend.PubSub,
-  live_view: [signing_salt: "cdN0XKbh"]
+  live_view: [signing_salt: System.get_env("SALT")]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -38,5 +38,3 @@ config :backend, Backend.Mailer,
   password: System.get_env("SMTP_PASSWORD"),
   authentication: "plain",
   enable_starttls_auto: true
-
-IO.inspect(System.get_env("SMTP_USERNAME"))
