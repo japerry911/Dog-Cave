@@ -39,4 +39,4 @@ config :backend, Backend.Mailer,
   authentication: "plain",
   enable_starttls_auto: true
 
-Application.compile_env!(:backend, :SMTP_USERNAME)
+IO.inspect(System.get_env("SMTP_USERNAME"))
