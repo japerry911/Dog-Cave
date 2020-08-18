@@ -11,10 +11,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import LoadingOverlay from "react-loading-overlay";
 import phoenixServer from "../../api/phoenixServer";
+import { handleOpen } from "../../redux/actions/snackbarActions";
+import { useDispatch } from "react-redux";
 import { useStyles } from "./ContactUsStyles";
 
 const ContactUs = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
@@ -47,18 +50,38 @@ const ContactUs = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     const formData = new FormData();
 
     formData.set("email", email);
     formData.set("subject", subject);
     formData.set("message", message);
 
-    const result = await phoenixServer.post(
-      "/api/contact/send-email",
-      formData
+    let result;
+    try {
+      result = await phoenixServer.post("/api/contact/send-email", formData);
+    } catch (error) {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: `Message failed to send, please refresh and try again - ${error}`,
+        })
+      );
+      return;
+    }
+
+    dispatch(
+      handleOpen({
+        type: "success",
+        message: "Message successfully sent",
+      })
     );
 
-    console.log("Result: ", result);
+    setEmail("");
+    setSubject("");
+    setMessage("");
+    setIsLoading(false);
   };
 
   return (
@@ -176,6 +199,7 @@ const ContactUs = () => {
                               rowsMin={15}
                               rowsMax={15}
                               className={classes.bigTextFieldStyle}
+                              value={message}
                             />
                           </FormControl>
                         </Grid>
