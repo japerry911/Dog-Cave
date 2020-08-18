@@ -29,3 +29,12 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :backend, Backend.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  address: "smtp.gmail.com",
+  port: 587,
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  authentication: "plain",
+  enable_starttls_auto: true
