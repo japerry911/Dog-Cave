@@ -67,4 +67,9 @@ export const useStyles = makeStyles((theme) => ({
     width: "90%",
     height: "0.125rem",
   },
+  headerTextStyle: {
+    textDecoration: "none",
+    fontWeight: "bold",
+    color: "#000",
+  },
 }));

@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
 import LoadingOverlay from "react-loading-overlay";
+import { Link } from "react-router-dom";
 import { useStyles } from "./ForumsMainStyles";
 
 const ForumsMain = () => {
@@ -146,6 +147,8 @@ const ForumsMain = () => {
                               <Typography
                                 variant="h5"
                                 className={classes.headerTextStyle}
+                                component={Link}
+                                to="/"
                               >
                                 {categoryArray[0]}
                               </Typography>
@@ -157,10 +160,7 @@ const ForumsMain = () => {
                               </Typography>
                             </Grid>
                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                              <Typography
-                                variant="h5"
-                                className={classes.headerTextStyle}
-                              >
+                              <Typography variant="h5">
                                 {categoryArray[2]}
                               </Typography>
                             </Grid>
