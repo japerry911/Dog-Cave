@@ -48,9 +48,8 @@ const ShowTopic = () => {
       <LoadingOverlay active={isLoading} spinner text="Loading Categories...">
         <div className={classes.mainDivStyle}>
           <HeroHeader
-            imgUrl="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ShowTopics/fudo-jahic-PQf2Vv7xWjo-unsplash.jpg"
-            headerText={`${showTopic.title} - Topics`}
-            pushDown
+            imgUrl="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ShowTopics/erik-mclean-laaW2GE07TY-unsplash.jpg"
+            headerText={`Topic: ${showTopic.title}`}
           />
           <Grid
             container
