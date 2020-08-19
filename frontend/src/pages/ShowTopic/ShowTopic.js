@@ -16,22 +16,24 @@ const ShowTopic = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showTopic, setShowTopic] = useState({});
   const [postsArray, setPostsArray] = useState([]);
+  const [questionArray, setQuestionArray] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
     phoenixServer.get(`/api/topics/${params.topicId}`).then(
       (response) => {
+        const rawPostsArray = response.data.data.posts.map((postObject) => [
+          postObject.id,
+          postObject.content,
+          postObject.is_question,
+          postObject.inserted_at,
+          postObject.updated_at,
+          postObject.user,
+        ]);
+
         setShowTopic(response.data.data);
-        setPostsArray(
-          response.data.data.posts.map((postObject) => [
-            postObject.id,
-            postObject.content,
-            postObject.is_question,
-            postObject.inserted_at,
-            postObject.updated_at,
-            postObject.user,
-          ])
-        );
+        setPostsArray(rawPostsArray.filter((postArray) => !postArray[2]));
+        setQuestionArray(rawPostsArray.find((postArray) => postArray[2]));
         setIsLoading(false);
       },
       (error) => {
@@ -107,6 +109,34 @@ const ShowTopic = () => {
                     >
                       <Grid
                         item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        xl={12}
+                        align="center"
+                      >
+                        <Typography
+                          variant="h3"
+                          className={classes.headerTextLeftStyle}
+                        >
+                          {showTopic.title}
+                        </Typography>
+                      </Grid>
+                      <Divider className={classes.dividerStyle} />
+                    </Grid>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                      xl={12}
+                      className={classes.minFlexBasisStyle}
+                    >
+                      <Grid
+                        item
                         xs={9}
                         sm={9}
                         md={9}
@@ -115,21 +145,33 @@ const ShowTopic = () => {
                         align="left"
                       >
                         <Typography
-                          variant="h4"
-                          className={classes.headerTextLeftStyle}
+                          variant="h6"
+                          className={classes.headerTextStyle}
                         >
-                          Topic:
+                          {questionArray[1]}
                         </Typography>
                       </Grid>
                       <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
                         <Typography
-                          variant="h4"
+                          variant="h5"
                           className={classes.headerTextStyle}
                         >
-                          Number of Posts:
+                          {questionArray[2]}
                         </Typography>
                       </Grid>
-                      <Divider className={classes.dividerStyle} />
+                    </Grid>
+                    <Grid
+                      item
+                      container
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                      xl={12}
+                      justify="center"
+                      className={classes.minFlexBasisStyle}
+                    >
+                      <Divider className={classes.lightDividerStyle} />
                     </Grid>
                     {postsArray.map((postArray) => {
                       return (
