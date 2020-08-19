@@ -17,8 +17,8 @@ export const useStyles = makeStyles((theme) => ({
     border: `3pt solid ${theme.palette.secondary.main}`,
     padding: "3rem 0",
     marginTop: "3rem",
-    height: "55rem",
-    width: "60%",
+    minHeight: "55rem",
+    width: "70%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
@@ -41,9 +41,9 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   subPaperStyle: {
-    width: "80%",
-    height: "90%",
-    padding: "1rem 0",
+    width: "90%",
+    minHeight: "90%",
+    padding: "1rem",
     backgroundColor: theme.colors.lightGray,
     display: "flex",
     flexDirection: "column",
@@ -52,24 +52,42 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
   },
   gridItemStyle: {
-    flexBasis: "45%",
+    flexBasis: "40%",
   },
   dividerStyle: {
-    width: "90%",
+    width: "100%",
     height: "0.25rem",
     backgroundColor: theme.colors.lightBlueGray,
-    marginTop: "0.25rem",
   },
   minFlexBasisStyle: {
-    flexBasis: "30%",
+    flexBasis: "100%",
   },
   lightDividerStyle: {
-    width: "90%",
+    width: "100%",
     height: "0.125rem",
   },
   headerTextStyle: {
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+  },
+  headerTextLeftStyle: {
+    paddingLeft: "0.75rem",
+    textDecoration: "none",
+    fontWeight: "bold",
+    color: "#000",
+  },
+  profieImgStyle: {
+    borderRadius: 12,
+    width: "4.5rem",
+    height: "4.5rem",
+    marginTop: "1rem",
+  },
+  bodyTextStyle: {
+    fontSize: "0.75rem",
+    padding: "0 0.5rem",
+  },
+  timeTextStyle: {
+    fontSize: "0.5rem",
   },
 }));
