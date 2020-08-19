@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     border: `3pt solid ${theme.palette.secondary.main}`,
     padding: "1rem 0",
     marginTop: "3rem",
-    height: "55rem",
+    minHeight: "55rem",
     width: "70%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
@@ -42,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   subPaperStyle: {
     width: "90%",
-    height: "90%",
+    minHeight: "90%",
     padding: "1rem",
     backgroundColor: theme.colors.lightGray,
     display: "flex",
@@ -76,5 +76,18 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+  },
+  profieImgStyle: {
+    borderRadius: 12,
+    width: "4.5rem",
+    height: "4.5rem",
+    marginTop: "1rem",
+  },
+  bodyTextStyle: {
+    fontSize: "0.75rem",
+    padding: "0 0.5rem",
+  },
+  timeTextStyle: {
+    fontSize: "0.5rem",
   },
 }));

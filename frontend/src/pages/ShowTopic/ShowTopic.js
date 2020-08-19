@@ -134,43 +134,54 @@ const ShowTopic = () => {
                       lg={12}
                       xl={12}
                       className={classes.minFlexBasisStyle}
+                      alignItems="center"
                     >
+                      <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                        <img
+                          alt="User profile"
+                          src={
+                            questionArray[5] !== undefined
+                              ? questionArray[5].img_url
+                              : null
+                          }
+                          className={classes.profieImgStyle}
+                        />
+                        <Typography variant="subtitle2">
+                          {questionArray[5] !== undefined
+                            ? questionArray[5].username
+                            : null}
+                        </Typography>
+                      </Grid>
                       <Grid
                         item
-                        xs={9}
-                        sm={9}
-                        md={9}
-                        lg={9}
-                        xl={9}
+                        xs={7}
+                        sm={7}
+                        md={7}
+                        lg={7}
+                        xl={7}
                         align="left"
                       >
                         <Typography
-                          variant="h6"
-                          className={classes.headerTextStyle}
+                          variant="body1"
+                          className={classes.bodyTextStyle}
                         >
                           {questionArray[1]}
                         </Typography>
                       </Grid>
                       <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
                         <Typography
-                          variant="h5"
-                          className={classes.headerTextStyle}
+                          variant="subtitle2"
+                          className={classes.timeTextStyle}
                         >
-                          {questionArray[2]}
+                          Posted: {questionArray[3]}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          className={classes.timeTextStyle}
+                        >
+                          Last Updated: {questionArray[4]}
                         </Typography>
                       </Grid>
-                    </Grid>
-                    <Grid
-                      item
-                      container
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      lg={12}
-                      xl={12}
-                      justify="center"
-                      className={classes.minFlexBasisStyle}
-                    >
                       <Divider className={classes.lightDividerStyle} />
                     </Grid>
                     {postsArray.map((postArray) => {
@@ -185,43 +196,48 @@ const ShowTopic = () => {
                             lg={12}
                             xl={12}
                             className={classes.minFlexBasisStyle}
+                            alignItems="center"
                           >
+                            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                              <img
+                                alt="User profile"
+                                src={postArray[5].img_url}
+                                className={classes.profieImgStyle}
+                              />
+                              <Typography variant="subtitle2">
+                                {postArray[5].username}
+                              </Typography>
+                            </Grid>
                             <Grid
                               item
-                              xs={9}
-                              sm={9}
-                              md={9}
-                              lg={9}
-                              xl={9}
+                              xs={7}
+                              sm={7}
+                              md={7}
+                              lg={7}
+                              xl={7}
                               align="left"
                             >
                               <Typography
-                                variant="h6"
-                                className={classes.headerTextStyle}
+                                variant="body1"
+                                className={classes.bodyTextStyle}
                               >
                                 {postArray[1]}
                               </Typography>
                             </Grid>
                             <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
                               <Typography
-                                variant="h5"
-                                className={classes.headerTextStyle}
+                                variant="subtitle2"
+                                className={classes.timeTextStyle}
                               >
-                                {postArray[2]}
+                                Posted: {postArray[3]}
+                              </Typography>
+                              <Typography
+                                variant="subtitle2"
+                                className={classes.timeTextStyle}
+                              >
+                                Last Updated: {postArray[4]}
                               </Typography>
                             </Grid>
-                          </Grid>
-                          <Grid
-                            item
-                            container
-                            xs={12}
-                            sm={12}
-                            md={12}
-                            lg={12}
-                            xl={12}
-                            justify="center"
-                            className={classes.minFlexBasisStyle}
-                          >
                             <Divider className={classes.lightDividerStyle} />
                           </Grid>
                         </Fragment>
