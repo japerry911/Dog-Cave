@@ -71,4 +71,10 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#000",
   },
+  headerTextLeftStyle: {
+    paddingLeft: "0.75rem",
+    textDecoration: "none",
+    fontWeight: "bold",
+    color: "#000",
+  },
 }));

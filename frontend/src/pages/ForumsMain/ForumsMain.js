@@ -100,6 +100,7 @@ const ForumsMain = () => {
                       lg={12}
                       xl={12}
                       className={classes.minFlexBasisStyle}
+                      justify="center"
                     >
                       <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                         <Typography
@@ -117,18 +118,6 @@ const ForumsMain = () => {
                           Number of Topics:
                         </Typography>
                       </Grid>
-                    </Grid>
-                    <Grid
-                      item
-                      container
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      lg={12}
-                      xl={12}
-                      justify="center"
-                      className={classes.minFlexBasisStyle}
-                    >
                       <Divider className={classes.dividerStyle} />
                     </Grid>
                     {categoriesArray.map((categoryArray) => {
@@ -150,7 +139,7 @@ const ForumsMain = () => {
                                 variant="h5"
                                 className={classes.headerTextStyle}
                                 component={Link}
-                                to="/"
+                                to={`/forums/categories/${categoryArray[3]}`}
                               >
                                 {categoryArray[0]}
                               </Typography>
