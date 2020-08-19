@@ -12,10 +12,15 @@ const NavBar = ({ location }) => {
   const [title, setTitle] = useState("Home");
 
   useEffect(() => {
-    setTitle(
-      ROUTES_ARRAY.find((routeObject) => routeObject.link === location.pathname)
-        .title
+    const routeObject = ROUTES_ARRAY.find(
+      (routeObject) => routeObject.link === location.pathname
     );
+
+    if (routeObject) {
+      setTitle(routeObject.title);
+    } else {
+      setTitle("Get Back to the Cave!");
+    }
   }, [location]);
 
   const toggleDrawer = () => {

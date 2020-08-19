@@ -20,7 +20,7 @@ defmodule Backend.Categories do
   def list_categories do
     Category
     |> order_by(asc: :id)
-    |> preload(:topics)
+    |> preload(topics: [:posts])
     |> Repo.all()
   end
 
@@ -40,7 +40,7 @@ defmodule Backend.Categories do
   """
   def get_category!(id) do
     Category
-    |> preload(:topics)
+    |> preload(topics: [:posts])
     |> Repo.get!(id)
   end
 

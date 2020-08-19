@@ -1,31 +1,32 @@
-import React, { Fragment, useEffect, useState } from "react";
-import HeroHeader from "../../components/HeroHeader/HeroHeader";
+import React, { Fragment, useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
+import HeroHeader from "../../components/HeroHeader/HeroHeader";
+import LoadingOverlay from "react-loading-overlay";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
-import LoadingOverlay from "react-loading-overlay";
-import { Link } from "react-router-dom";
-import { useStyles } from "./ForumsMainStyles";
+import { Link, useParams } from "react-router-dom";
+import { useStyles } from "./ShowCategoryStyles";
 
-const ForumsMain = () => {
+const ShowCategory = () => {
   const classes = useStyles();
+  const params = useParams();
 
-  const [categoriesArray, setCategoriesArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [topicsArray, setTopicsArray] = useState([]);
+  const [showCategory, setShowCategory] = useState({});
 
   useEffect(() => {
     setIsLoading(true);
-
-    phoenixServer.get("/api/categories").then(
+    phoenixServer.get(`/api/categories/${params.id}`).then(
       (response) => {
-        setCategoriesArray(
-          response.data.data.map((categoryObject) => [
-            categoryObject.name,
-            categoryObject.description,
-            categoryObject.topics.length,
-            categoryObject.id,
+        setShowCategory(response.data.data);
+        setTopicsArray(
+          response.data.data.topics.map((topicObject) => [
+            topicObject.id,
+            topicObject.title,
+            topicObject.posts.length,
           ])
         );
         setIsLoading(false);
@@ -35,15 +36,15 @@ const ForumsMain = () => {
         setIsLoading(false);
       }
     );
-  }, []);
+  }, [params]);
 
   return (
     <Fragment>
       <LoadingOverlay active={isLoading} spinner text="Loading Categories...">
         <div className={classes.mainDivStyle}>
           <HeroHeader
-            imgUrl="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ForumMain/agustina-heit-tC3hq_XAfv0-unsplash.jpg"
-            headerText="Dog Cave Forums"
+            imgUrl="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ShowCategories/bear-lissimo-iMk78NZirCw-unsplash.jpg"
+            headerText={`${showCategory.name} - Topics`}
             pushDown
           />
           <Grid
@@ -100,29 +101,73 @@ const ForumsMain = () => {
                       lg={12}
                       xl={12}
                       className={classes.minFlexBasisStyle}
-                      justify="center"
                     >
-                      <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                      <Grid
+                        item
+                        xs={9}
+                        sm={9}
+                        md={9}
+                        lg={9}
+                        xl={9}
+                        align="left"
+                      >
                         <Typography
                           variant="h4"
-                          className={classes.headerTextStyle}
+                          className={classes.headerTextLeftStyle}
                         >
-                          Category:
+                          Topic:
                         </Typography>
                       </Grid>
-                      <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                      <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
                         <Typography
                           variant="h4"
                           className={classes.headerTextStyle}
                         >
-                          Number of Topics:
+                          Number of Posts:
                         </Typography>
                       </Grid>
                       <Divider className={classes.dividerStyle} />
                     </Grid>
-                    {categoriesArray.map((categoryArray) => {
+                    {topicsArray.map((topicArray) => {
                       return (
-                        <Fragment key={categoryArray[3]}>
+                        <Fragment key={topicArray[0]}>
+                          <Grid
+                            item
+                            container
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className={classes.minFlexBasisStyle}
+                          >
+                            <Grid
+                              item
+                              xs={9}
+                              sm={9}
+                              md={9}
+                              lg={9}
+                              xl={9}
+                              align="left"
+                            >
+                              <Typography
+                                variant="h6"
+                                className={classes.headerTextStyle}
+                                component={Link}
+                                to={`/forums/categories/${showCategory.id}/topics/${topicArray[0]}`}
+                              >
+                                {topicArray[1]}
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                              <Typography
+                                variant="h5"
+                                className={classes.headerTextStyle}
+                              >
+                                {topicArray[2]}
+                              </Typography>
+                            </Grid>
+                          </Grid>
                           <Grid
                             item
                             container
@@ -132,41 +177,9 @@ const ForumsMain = () => {
                             lg={12}
                             xl={12}
                             justify="center"
-                            alignItems="center"
+                            className={classes.minFlexBasisStyle}
                           >
-                            <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                              <Typography
-                                variant="h5"
-                                className={classes.headerTextStyle}
-                                component={Link}
-                                to={`/forums/categories/${categoryArray[3]}`}
-                              >
-                                {categoryArray[0]}
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                className={classes.subtitleTextStyle}
-                              >
-                                {categoryArray[1]}
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                              <Typography variant="h5">
-                                {categoryArray[2]}
-                              </Typography>
-                            </Grid>
-                            <Grid
-                              item
-                              container
-                              xs={12}
-                              sm={12}
-                              md={12}
-                              lg={12}
-                              xl={12}
-                              justify="center"
-                            >
-                              <Divider className={classes.lightDividerStyle} />
-                            </Grid>
+                            <Divider className={classes.lightDividerStyle} />
                           </Grid>
                         </Fragment>
                       );
@@ -182,4 +195,4 @@ const ForumsMain = () => {
   );
 };
 
-export default ForumsMain;
+export default ShowCategory;

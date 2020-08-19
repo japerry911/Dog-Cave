@@ -2,7 +2,7 @@ defmodule Backend.Posts.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:content, :is_question, :topic]}
+  @derive {Jason.Encoder, only: [:content, :is_question]}
 
   schema "posts" do
     field :content, :string
