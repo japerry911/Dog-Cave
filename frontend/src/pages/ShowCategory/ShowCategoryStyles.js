@@ -43,7 +43,7 @@ export const useStyles = makeStyles((theme) => ({
   subPaperStyle: {
     width: "90%",
     height: "90%",
-    padding: "1rem 0",
+    padding: "1rem",
     backgroundColor: theme.colors.lightGray,
     display: "flex",
     flexDirection: "column",
@@ -52,19 +52,18 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
   },
   gridItemStyle: {
-    flexBasis: "45%",
+    flexBasis: "40%",
   },
   dividerStyle: {
-    width: "90%",
+    width: "100%",
     height: "0.25rem",
     backgroundColor: theme.colors.lightBlueGray,
-    marginTop: "0.25rem",
   },
   minFlexBasisStyle: {
-    flexBasis: "30%",
+    flexBasis: "100%",
   },
   lightDividerStyle: {
-    width: "90%",
+    width: "100%",
     height: "0.125rem",
   },
   headerTextStyle: {

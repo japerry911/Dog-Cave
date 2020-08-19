@@ -20,7 +20,7 @@ defmodule Backend.Topics do
   def list_topics do
     Topic
     |> order_by(asc: :id)
-    |> preload([:user, :category])
+    |> preload([:user, :category, :posts])
     |> Repo.all()
   end
 
@@ -40,7 +40,7 @@ defmodule Backend.Topics do
   """
   def get_topic!(id) do
     Topic
-    |> preload([:user, :category])
+    |> preload([:user, :category, :posts])
     |> Repo.get!(id)
   end
 

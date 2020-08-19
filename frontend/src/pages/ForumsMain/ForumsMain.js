@@ -28,11 +28,13 @@ const ForumsMain = () => {
             categoryObject.id,
           ])
         );
+        setIsLoading(false);
       },
-      (error) => console.log(error)
+      (error) => {
+        console.log(error);
+        setIsLoading(false);
+      }
     );
-
-    setIsLoading(false);
   }, []);
 
   return (

@@ -15,17 +15,21 @@ const ShowCategory = () => {
   const [topicsArray, setTopicsArray] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     phoenixServer.get(`/api/categories/20`).then(
       (response) => {
         setTopicsArray(
           response.data.data.topics.map((topicObject) => [
             topicObject.id,
             topicObject.title,
+            topicObject.posts.length,
           ])
         );
+        setIsLoading(false);
       },
       (error) => {
         console.log(error);
+        setIsLoading(false);
       }
     );
   }, []);
@@ -94,7 +98,15 @@ const ShowCategory = () => {
                       xl={12}
                       className={classes.minFlexBasisStyle}
                     >
-                      <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
+                      <Grid
+                        item
+                        xs={9}
+                        sm={9}
+                        md={9}
+                        lg={9}
+                        xl={9}
+                        align="left"
+                      >
                         <Typography
                           variant="h4"
                           className={classes.headerTextStyle}
@@ -124,6 +136,60 @@ const ShowCategory = () => {
                     >
                       <Divider className={classes.dividerStyle} />
                     </Grid>
+                    {topicsArray.map((topicArray) => {
+                      return (
+                        <Fragment key={topicArray[0]}>
+                          <Grid
+                            item
+                            container
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            className={classes.minFlexBasisStyle}
+                          >
+                            <Grid
+                              item
+                              xs={9}
+                              sm={9}
+                              md={9}
+                              lg={9}
+                              xl={9}
+                              align="left"
+                            >
+                              <Typography
+                                variant="h4"
+                                className={classes.headerTextStyle}
+                              >
+                                {topicArray[1]}
+                              </Typography>
+                            </Grid>
+                            <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                              <Typography
+                                variant="h4"
+                                className={classes.headerTextStyle}
+                              >
+                                {topicArray[2]}
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                          <Grid
+                            item
+                            container
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            xl={12}
+                            justify="center"
+                            className={classes.minFlexBasisStyle}
+                          >
+                            <Divider className={classes.lightDividerStyle} />
+                          </Grid>
+                        </Fragment>
+                      );
+                    })}
                   </Paper>
                 </Grid>
               </Paper>
