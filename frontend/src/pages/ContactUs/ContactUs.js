@@ -58,9 +58,8 @@ const ContactUs = () => {
     formData.set("subject", subject);
     formData.set("message", message);
 
-    let result;
     try {
-      result = await phoenixServer.post("/api/contact/send-email", formData);
+      await phoenixServer.post("/api/contact/send-email", formData);
     } catch (error) {
       dispatch(
         handleOpen({
