@@ -8,7 +8,33 @@ defmodule BackendWeb.UserController do
 
   def index(conn, _params) do
     users = Users.list_users()
-    render(conn, "index.json", users: users)
+
+    IO.inspect(users)
+
+    render(
+      conn,
+      "index.json",
+      users:
+        Enum.map(users, fn user ->
+          %{
+            id: user.id,
+            username: user.username,
+            img_url: user.img_url,
+            inserted_at: user.inserted_at,
+            updated_at: user.updated_at,
+            posts:
+              Enum.map(user.posts, fn post ->
+                %{
+                  id: post.id,
+                  content: post.content,
+                  is_question: post.is_question,
+                  inserted_at: post.inserted_at,
+                  updated_at: post.updated_at
+                }
+              end)
+          }
+        end)
+    )
   end
 
   def create(conn, %{"user" => user_params}) do
