@@ -16,7 +16,7 @@ defmodule Backend.Posts.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:content, :is_question])
-    |> validate_required([:content, :is_question])
+    |> cast(attrs, [:content, :is_question, :user_id, :topic_id])
+    |> validate_required([:content, :is_question, :user_id, :topic_id])
   end
 end

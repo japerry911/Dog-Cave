@@ -28,7 +28,12 @@ defmodule BackendWeb.PostController do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.post_path(conn, :show, post))
-      |> render("show.json", post: post)
+      |> render("show.json",
+        post: %{
+          content: post.content,
+          is_question: post.is_question
+        }
+      )
     end
   end
 

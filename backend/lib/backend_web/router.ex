@@ -6,13 +6,30 @@ defmodule BackendWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticate do
+    plug BackendWeb.Plugs.Authenticate
+  end
+
   scope "/api", BackendWeb do
     pipe_through :api
 
-    resources "/users", UserController, except: [:new, :edit]
-    resources "/posts", PostController, except: [:new, :edit]
-    resources "/topics", TopicController, except: [:new, :edit]
-    resources "/categories", CategoryController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit, :update]
+    resources "/posts", PostController, except: [:new, :edit, :create, :update]
+    resources "/topics", TopicController, except: [:new, :edit, :create, :update]
+    resources "/categories", CategoryController, except: [:new, :edit, :create, :update]
+
+    scope "/authed" do
+      pipe_through :authenticate
+
+      resources "/posts", PostController, only: [:create, :update]
+      resources "/topics", TopicController, only: [:create, :update]
+      resources "/users", UserController, only: [:update]
+    end
+
+    scope "/sessions" do
+      post "/sign-in", SessionsController, :create
+      delete "/sign-out", SessionsController, :delete
+    end
 
     post "/contact/send-email", ContactController, :send_email
   end

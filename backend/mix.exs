@@ -45,7 +45,8 @@ defmodule Backend.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:bamboo, "~> 1.0"},
       {:bamboo_smtp, "~> 2.1.0"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:pbkdf2_elixir, "~> 1.0"}
     ]
   end
 
