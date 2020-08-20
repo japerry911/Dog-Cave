@@ -16,8 +16,10 @@ alias Backend.Posts.Post
 alias Backend.Topics.Topic
 alias Backend.Categories.Category
 alias Backend.Users
+alias Backend.AuthToken
 
 # Deletes all Tables
+Repo.delete_all(AuthToken)
 Repo.delete_all(Post)
 Repo.delete_all(Topic)
 Repo.delete_all(User)
