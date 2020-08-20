@@ -8,7 +8,17 @@ defmodule BackendWeb.CategoryController do
 
   def index(conn, _params) do
     categories = Categories.list_categories()
-    render(conn, "index.json", categories: categories)
+
+    render(conn, "index.json",
+      categories:
+        Enum.map(categories, fn category ->
+          %{
+            id: category.id,
+            name: category.name,
+            topic: Enum.map(category.topics, fn topic -> %{id: topic.id, title: topic.title} end)
+          }
+        end)
+    )
   end
 
   def create(conn, %{"category" => category_params}) do
@@ -22,7 +32,30 @@ defmodule BackendWeb.CategoryController do
 
   def show(conn, %{"id" => id}) do
     category = Categories.get_category!(id)
-    render(conn, "show.json", category: category)
+
+    render(conn, "show.json",
+      category: %{
+        id: category.id,
+        name: category.name,
+        topic:
+          Enum.map(category.topics, fn topic ->
+            %{
+              id: topic.id,
+              title: topic.title,
+              posts:
+                Enum.map(topic.posts, fn post ->
+                  %{
+                    id: post.id,
+                    content: post.content,
+                    is_question: post.is_question,
+                    inserted_at: post.inserted_at,
+                    updated_at: post.updated_at
+                  }
+                end)
+            }
+          end)
+      }
+    )
   end
 
   def update(conn, %{"id" => id, "category" => category_params}) do
