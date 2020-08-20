@@ -15,6 +15,7 @@ alias Backend.Users.User
 alias Backend.Posts.Post
 alias Backend.Topics.Topic
 alias Backend.Categories.Category
+alias Backend.Users
 
 # Deletes all Tables
 Repo.delete_all(Post)
@@ -31,25 +32,28 @@ category5 = Repo.insert!(%Category{name: "Category 5", description: "Description
 category6 = Repo.insert!(%Category{name: "Category 6", description: "Description6"})
 
 # Users Table Population
-user1 =
-  Repo.insert!(%User{
+{_status, user1} =
+  Users.create_user(%{
     username: "General",
     img_url:
-      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/sheri-hooley-KUm8K3EOaoE-unsplash.jpg"
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/sheri-hooley-KUm8K3EOaoE-unsplash.jpg",
+    password: "password"
   })
 
-user2 =
-  Repo.insert!(%User{
+{_status, user2} =
+  Users.create_user(%{
     username: "Blair",
     img_url:
-      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/sheri-hooley-2bs9I0n7unY-unsplash+(1).jpg"
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/sheri-hooley-2bs9I0n7unY-unsplash+(1).jpg",
+    password: "password"
   })
 
-user3 =
-  Repo.insert!(%User{
+{_status, user3} =
+  Users.create_user(%{
     username: "Roscoe",
     img_url:
-      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/tahoe-PGlA5efHOiI-unsplash.jpg"
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/tahoe-PGlA5efHOiI-unsplash.jpg",
+    password: "password"
   })
 
 # Topics Table Population
