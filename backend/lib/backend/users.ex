@@ -20,7 +20,7 @@ defmodule Backend.Users do
   def list_users do
     User
     |> order_by(asc: :id)
-    |> preload([:topics, posts: [:topic]])
+    |> preload([:posts, topics: [:posts]])
     |> Repo.all()
   end
 

@@ -18,5 +18,6 @@ defmodule Backend.Users.User do
     user
     |> cast(attrs, [:username, :img_url])
     |> validate_required([:username, :img_url])
+    |> validate_length(:username, min: 5, max: 20)
   end
 end
