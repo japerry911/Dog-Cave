@@ -8,7 +8,10 @@ defmodule Backend.Users.User do
   @derive {Jason.Encoder, only: [:username, :img_url]}
 
   schema "users" do
-    field :img_url, :string
+    field :img_url, :string,
+      default:
+        "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
@@ -23,7 +26,7 @@ defmodule Backend.Users.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:username, :img_url])
-    |> validate_required([:username, :img_url])
+    |> validate_required([:username])
     |> validate_length(:username, min: 5, max: 20)
   end
 
