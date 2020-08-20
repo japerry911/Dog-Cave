@@ -38,3 +38,9 @@ config :backend, Backend.Mailer,
   password: System.get_env("SMTP_PASSWORD"),
   authentication: "plain",
   enable_starttls_auto: true
+
+config :ex_aws,
+  access_key_id: {:system, "AWS_ACCESS_KEY_ID"},
+  secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
+  region: "us-east-2",
+  json_codec: Jason
