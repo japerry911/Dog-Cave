@@ -14,6 +14,11 @@ defmodule BackendWeb.Router do
     resources "/topics", TopicController, except: [:new, :edit]
     resources "/categories", CategoryController, except: [:new, :edit]
 
+    scope "/sessions" do
+      post "/sign-in", SessionsController, :create
+      delete "/sign-out", SessionsController, :delete
+    end
+
     post "/contact/send-email", ContactController, :send_email
   end
 
