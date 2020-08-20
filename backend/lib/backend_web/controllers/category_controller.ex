@@ -15,7 +15,7 @@ defmodule BackendWeb.CategoryController do
           %{
             id: category.id,
             name: category.name,
-            topic: Enum.map(category.topics, fn topic -> %{id: topic.id, title: topic.title} end)
+            topics: Enum.map(category.topics, fn topic -> %{id: topic.id, title: topic.title} end)
           }
         end)
     )
@@ -37,7 +37,7 @@ defmodule BackendWeb.CategoryController do
       category: %{
         id: category.id,
         name: category.name,
-        topic:
+        topics:
           Enum.map(category.topics, fn topic ->
             %{
               id: topic.id,
