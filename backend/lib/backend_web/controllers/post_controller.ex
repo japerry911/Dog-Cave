@@ -8,7 +8,19 @@ defmodule BackendWeb.PostController do
 
   def index(conn, _params) do
     posts = Posts.list_posts()
-    render(conn, "index.json", posts: posts)
+
+    render(conn, "index.json",
+      posts:
+        Enum.map(posts, fn post ->
+          %{
+            id: post.id,
+            content: post.content,
+            is_question: post.is_question,
+            topic: %{id: post.topic.id, title: post.topic.title},
+            user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url}
+          }
+        end)
+    )
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -22,7 +34,16 @@ defmodule BackendWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
-    render(conn, "show.json", post: post)
+
+    render(conn, "show.json",
+      post: %{
+        id: post.id,
+        content: post.content,
+        is_question: post.is_question,
+        topic: %{id: post.topic.id, title: post.topic.title},
+        user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url}
+      }
+    )
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
