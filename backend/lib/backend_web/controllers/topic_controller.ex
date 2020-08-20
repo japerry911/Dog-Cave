@@ -18,6 +18,11 @@ defmodule BackendWeb.TopicController do
             title: topic.title,
             inserted_at: topic.inserted_at,
             updated_at: topic.updated_at,
+            user: %{
+              id: topic.user.id,
+              username: topic.user.username,
+              img_url: topic.user.img_url
+            },
             posts:
               Enum.map(topic.posts, fn post ->
                 %{
@@ -52,6 +57,11 @@ defmodule BackendWeb.TopicController do
         title: topic.title,
         inserted_at: topic.inserted_at,
         updated_at: topic.updated_at,
+        user: %{
+          id: topic.user.id,
+          username: topic.user.username,
+          img_url: topic.user.img_url
+        },
         posts:
           Enum.map(topic.posts, fn post ->
             %{

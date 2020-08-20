@@ -20,6 +20,7 @@ defmodule BackendWeb.UserController do
             img_url: user.img_url,
             inserted_at: user.inserted_at,
             updated_at: user.updated_at,
+            topics: Enum.map(user.topics, fn topic -> %{id: topic.id, title: topic.title} end),
             posts:
               Enum.map(user.posts, fn post ->
                 %{
