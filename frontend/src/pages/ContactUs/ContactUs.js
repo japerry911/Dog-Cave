@@ -88,7 +88,7 @@ const ContactUs = () => {
       <LoadingOverlay active={isLoading} spinner text="Sending Message">
         <div className={classes.mainDivStyle}>
           <HeroHeader
-            headerText="CONTACT US"
+            headerText="Contact Us"
             imgUrl="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ContactUs/jamie-street-s9Tf1eBDFqw-unsplash.jpg"
           />
           <Grid
@@ -104,7 +104,7 @@ const ContactUs = () => {
                 <Divider className={classes.dividerStyle} />
                 <figure className={classes.logoFigureStyle}>
                   <img
-                    alt="Skylord's Timekeeping Logo"
+                    alt="Dog Cave Logo"
                     src="https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/Logo/your-logo.png"
                     className={classes.logoImgStyle}
                   />
