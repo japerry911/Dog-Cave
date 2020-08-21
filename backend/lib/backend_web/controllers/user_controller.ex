@@ -125,4 +125,16 @@ defmodule BackendWeb.UserController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def exists?(conn, %{"username" => username}) do
+    exists_status = Users.get_by_username(username)
+
+    if exists_status do
+      conn
+      |> send_resp(406, "Not Acceptable")
+    else
+      conn
+      |> send_resp(200, "OK")
+    end
+  end
 end
