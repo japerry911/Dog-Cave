@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import phoenixServer from "../../api/phoenixServer";
 import FormImageUploader from "../../components/FormImageUploader/FormImageUploader";
 import { handleOpen, handleClose } from "../../redux/actions/snackbarActions";
 import { useDispatch } from "react-redux";
@@ -84,6 +85,24 @@ const SignUp = () => {
       setImageValidation(true);
     }
   }, [image, dispatch]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    const existsStatus = await phoenixServer.post("/api/users/exists", {
+      username,
+    });
+
+    if (existsStatus.status !== 200) {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: "Username exists already, please try a different username",
+        })
+      );
+      return;
+    }
+  };
 
   return (
     <Fragment>
