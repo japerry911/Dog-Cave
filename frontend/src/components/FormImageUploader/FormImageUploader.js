@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useStyles } from "./FormImageUploaderStyles";
-import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
 

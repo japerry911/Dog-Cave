@@ -19,9 +19,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   paperStyle: {
     border: `3pt solid ${theme.palette.secondary.main}`,
-    padding: "1rem 0",
+    padding: "1.5rem 0",
     marginTop: "3rem",
-    height: "50rem",
+    minHeight: "50rem",
     width: "40%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
