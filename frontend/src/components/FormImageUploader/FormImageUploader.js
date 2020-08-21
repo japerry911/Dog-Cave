@@ -13,7 +13,7 @@ const FormImageUploader = ({ labelText, onChange, id, emptyField }) => {
 
   return (
     <Fragment>
-      <Typography variant="h6" className={classes.labelStyle}>
+      <Typography variant="body1" className={classes.labelStyle}>
         {labelText}
       </Typography>
       <Input

@@ -17,7 +17,7 @@ defmodule BackendWeb.Router do
     resources "/posts", PostController, except: [:new, :edit, :create, :update]
     resources "/topics", TopicController, except: [:new, :edit, :create, :update]
     resources "/categories", CategoryController, except: [:new, :edit, :create, :update]
-    post "/users/exists", UserController, :exists?
+    get "/users/exists/:username", UserController, :exists?
 
     scope "/authed" do
       pipe_through :authenticate

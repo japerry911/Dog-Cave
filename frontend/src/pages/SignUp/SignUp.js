@@ -89,16 +89,11 @@ const SignUp = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const existsStatus = await phoenixServer.post("/api/users/exists", {
-      username,
-    });
-
-    if (existsStatus.status !== 200) {
+    try {
+      await phoenixServer.get(`/api/users/exists/${username}`);
+    } catch (error) {
       dispatch(
-        handleOpen({
-          type: "error",
-          message: "Username exists already, please try a different username",
-        })
+        handleOpen({ type: "error", message: `Username Exists - ${error}` })
       );
       return;
     }
@@ -142,7 +137,7 @@ const SignUp = () => {
                   align="center"
                   justify="center"
                 >
-                  <form className={classes.formStyle}>
+                  <form className={classes.formStyle} onSubmit={onSubmit}>
                     <Grid
                       container
                       item

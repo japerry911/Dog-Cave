@@ -127,6 +127,7 @@ defmodule BackendWeb.UserController do
   end
 
   def exists?(conn, %{"username" => username}) do
+    IO.inspect(username)
     exists_status = Users.get_by_username(username)
 
     if exists_status do
