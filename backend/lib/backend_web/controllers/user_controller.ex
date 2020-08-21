@@ -36,12 +36,53 @@ defmodule BackendWeb.UserController do
     )
   end
 
-  def create(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Users.create_user(user_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.user_path(conn, :show, user))
-      |> render("show.json", user: user)
+  # %{"user" => user_params}) do
+  def create(conn, user_params) do
+    if Map.has_key?(user_params, "img") and
+         String.starts_with?(user_params["img"].content_type, "image") do
+      img_file = File.read!(user_params["img"].path)
+
+      random_number_string =
+        :crypto.strong_rand_bytes(30)
+        |> Base.url_encode64()
+        |> binary_part(0, 30)
+
+      ExAws.S3.put_object(
+        "dog-cave2134912939213",
+        "ProfilePictures/#{random_number_string <> user_params["img"].filename}",
+        img_file
+      )
+      |> ExAws.request!()
+      |> Map.fetch(:status_code)
+      |> case do
+        {:ok, _status_code} ->
+          nil
+
+        _ ->
+          conn
+          |> send_resp(500, "Internal Error. Please Try Again.")
+      end
+
+      updated_img_url =
+        "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/#{
+          random_number_string <> user_params["img"].filename
+        }"
+
+      user_params = Map.put(user_params, "img_url", updated_img_url)
+
+      with {:ok, %User{} = user} <- Users.create_user(user_params) do
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", Routes.user_path(conn, :show, user))
+        |> render("show.json", user: user)
+      end
+    else
+      with {:ok, %User{} = user} <- Users.create_user(user_params) do
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", Routes.user_path(conn, :show, user))
+        |> render("show.json", user: user)
+      end
     end
   end
 
