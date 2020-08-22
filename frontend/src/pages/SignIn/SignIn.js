@@ -7,7 +7,8 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { handleOpen } from "../../redux/actions/snackbarActions";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { signIn } from "../../redux/actions/authActions";
 import { useStyles } from "./SignInStyles";
@@ -22,6 +23,8 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.isLoading);
 
+  const history = useHistory();
+
   useEffect(() => {
     setValidationStatus(username && password);
   }, [username, password]);
@@ -29,7 +32,21 @@ const SignIn = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    await dispatch(signIn(username, password));
+    const authed = await dispatch(signIn(username, password));
+
+    if (authed) {
+      dispatch(
+        handleOpen({ type: "success", message: `Welcome back ${username}!` })
+      );
+      history.push("/forums");
+    } else {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: "Incorrect combination, please try again.",
+        })
+      );
+    }
   };
 
   return (

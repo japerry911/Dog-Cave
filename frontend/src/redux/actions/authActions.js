@@ -31,10 +31,14 @@ export const signIn = (username, password) => {
 
     return phoenixServer.post("/api/sessions/sign-in", formData).then(
       (response) => {
-        console.log(response);
+        dispatch(
+          success({ token: response.data.token, user: response.data.user })
+        );
+        return true;
       },
       (error) => {
-        console.log(error);
+        dispatch(failed({ error }));
+        return false;
       }
     );
   };
