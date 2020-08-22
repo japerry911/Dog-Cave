@@ -9,6 +9,7 @@ import ForumsMain from "../pages/ForumsMain/ForumsMain";
 import About from "../pages/About/About";
 import ShowCategory from "../pages/ShowCategory/ShowCategory";
 import ShowTopic from "../pages/ShowTopic/ShowTopic";
+import Profile from "../pages/Profile/Profile";
 
 export default () => {
   return (
@@ -21,6 +22,7 @@ export default () => {
       <Route exact path="/forums" component={ForumsMain} />
       <Route exact path="/about" component={About} />
       <Route exact path="/forums/categories/:id" component={ShowCategory} />
+      <Route exact path="/profiles/:id" component={Profile} />
       <Route
         exact
         path="/forums/categories/:categoryId/topics/:topicId"
