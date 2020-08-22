@@ -108,4 +108,14 @@ defmodule Backend.Users do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  @doc """
+  Looks up User by Username and return True or False
+  """
+  def get_by_username(username) do
+    case Repo.get_by(User, username: username) do
+      nil -> false
+      _ -> true
+    end
+  end
 end

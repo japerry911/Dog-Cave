@@ -36,7 +36,6 @@ defmodule BackendWeb.UserController do
     )
   end
 
-  # %{"user" => user_params}) do
   def create(conn, user_params) do
     if Map.has_key?(user_params, "img") and
          String.starts_with?(user_params["img"].content_type, "image") do
@@ -123,6 +122,18 @@ defmodule BackendWeb.UserController do
 
     with {:ok, %User{}} <- Users.delete_user(user) do
       send_resp(conn, :no_content, "")
+    end
+  end
+
+  def exists?(conn, %{"username" => username}) do
+    exists_status = Users.get_by_username(username)
+
+    if exists_status do
+      conn
+      |> send_resp(406, "Not Acceptable")
+    else
+      conn
+      |> send_resp(200, "OK")
     end
   end
 end
