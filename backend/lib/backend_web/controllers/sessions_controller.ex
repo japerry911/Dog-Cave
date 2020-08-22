@@ -13,7 +13,11 @@ defmodule BackendWeb.SessionsController do
         |> render("show.json",
           auth_token: %{
             token: auth_token.token,
-            user: %{id: auth_token.user.id, username: auth_token.user.username}
+            user: %{
+              id: auth_token.user.id,
+              username: auth_token.user.username,
+              img_url: auth_token.user.img_url
+            }
           }
         )
 
