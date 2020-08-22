@@ -8,6 +8,8 @@ const INITIAL_STATE = {
 
 const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.payload) {
+    default:
+      return state;
   }
 };
 
