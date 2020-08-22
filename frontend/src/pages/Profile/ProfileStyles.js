@@ -1,9 +1,6 @@
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 export const useStyles = makeStyles((theme) => ({
-  mainContainerStyle: {
-    minHeight: "40rem",
-  },
   mainDivStyle: {
     minHeight: "100vh",
     width: "100%",
@@ -13,8 +10,9 @@ export const useStyles = makeStyles((theme) => ({
       minHeight: "85rem",
     },
   },
-  logoImgStyle: {
-    width: "40%",
+  profileImgStyle: {
+    borderRadius: "12%",
+    width: "10rem",
     height: "auto",
     [theme.breakpoints.only("xs")]: {
       width: "100%",

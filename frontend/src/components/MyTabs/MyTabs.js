@@ -5,7 +5,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import TabPanel from "../TabPanel/TabPanel";
 
-const MyTabs = () => {
+const MyTabs = ({ content }) => {
   const classes = useStyles();
 
   const [value, setValue] = useState(0);
@@ -24,7 +24,7 @@ const MyTabs = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        {content[0]}
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

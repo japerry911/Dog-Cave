@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import MyTabs from "../../components/MyTabs/MyTabs";
+import SummaryTab from "../../components/SummaryTab/SummaryTab";
 import { useStyles } from "./ProfileStyles";
 
 const Profile = () => {
@@ -32,14 +33,14 @@ const Profile = () => {
               {userObject.username}
             </Typography>
             <Divider className={classes.dividerStyle} />
-            <figure className={classes.logoFigureStyle}>
+            <figure className={classes.profileFigureStyle}>
               <img
-                alt="Dog Cave Logo"
+                alt="Profile"
                 src={userObject.img_url}
-                className={classes.logoImgStyle}
+                className={classes.profileImgStyle}
               />
             </figure>
-            <MyTabs />
+            <MyTabs content={[<SummaryTab />]} />
           </Paper>
         </Grid>
       </Grid>
