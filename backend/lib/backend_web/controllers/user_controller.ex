@@ -36,7 +36,6 @@ defmodule BackendWeb.UserController do
     )
   end
 
-  # %{"user" => user_params}) do
   def create(conn, user_params) do
     if Map.has_key?(user_params, "img") and
          String.starts_with?(user_params["img"].content_type, "image") do
@@ -127,7 +126,6 @@ defmodule BackendWeb.UserController do
   end
 
   def exists?(conn, %{"username" => username}) do
-    IO.inspect(username)
     exists_status = Users.get_by_username(username)
 
     if exists_status do

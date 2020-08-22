@@ -89,13 +89,41 @@ const SignUp = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     try {
       await phoenixServer.get(`/api/users/exists/${username}`);
     } catch (error) {
       dispatch(
         handleOpen({ type: "error", message: `Username Exists - ${error}` })
       );
+      setIsLoading(false);
       return;
+    }
+
+    const formData = new FormData();
+
+    formData.set("username", username);
+    formData.set("password", password);
+    if (image) {
+      formData.set("img", image);
+    }
+
+    try {
+      const response = await phoenixServer.post("/api/users", formData);
+      console.log(response);
+      setIsLoading(false);
+      dispatch(
+        handleOpen({ type: "success", message: "Account Successfully Created" })
+      );
+    } catch (error) {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: `Error in creating account - ${error}`,
+        })
+      );
+      setIsLoading(false);
     }
   };
 
