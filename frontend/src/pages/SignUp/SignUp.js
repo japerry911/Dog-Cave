@@ -11,12 +11,14 @@ import phoenixServer from "../../api/phoenixServer";
 import FormImageUploader from "../../components/FormImageUploader/FormImageUploader";
 import { handleOpen, handleClose } from "../../redux/actions/snackbarActions";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "./SignUpStyles";
 
 const SignUp = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
@@ -110,12 +112,12 @@ const SignUp = () => {
     }
 
     try {
-      const response = await phoenixServer.post("/api/users", formData);
-      console.log(response);
-      setIsLoading(false);
+      await phoenixServer.post("/api/users", formData);
       dispatch(
         handleOpen({ type: "success", message: "Account Successfully Created" })
       );
+      setIsLoading(false);
+      history.push("/sign-in");
     } catch (error) {
       dispatch(
         handleOpen({
