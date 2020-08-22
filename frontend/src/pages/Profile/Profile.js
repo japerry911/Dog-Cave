@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
+import MyTabs from "../../components/MyTabs/MyTabs";
 import { useStyles } from "./ProfileStyles";
 
 const Profile = () => {
@@ -38,7 +39,7 @@ const Profile = () => {
                 className={classes.logoImgStyle}
               />
             </figure>
-            <Paper className={classes.subPaperStyle}></Paper>
+            <MyTabs />
           </Paper>
         </Grid>
       </Grid>

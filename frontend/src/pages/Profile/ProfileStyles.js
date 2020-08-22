@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "3rem",
     minHeight: "30rem",
     width: "40%",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.colors.lightBlueGray,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
@@ -35,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   titleStyle: {
     fontWeight: "bold",
-    color: theme.colors.lightGray,
+    color: theme.palette.primary.main,
   },
   subPaperStyle: {
     width: "80%",
