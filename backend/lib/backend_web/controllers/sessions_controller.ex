@@ -6,9 +6,16 @@ defmodule BackendWeb.SessionsController do
   def create(conn, %{"username" => username, "password" => password}) do
     case User.sign_in(username, password) do
       {:ok, auth_token} ->
+        auth_token = Backend.Repo.preload(auth_token, :user)
+
         conn
         |> put_status(:ok)
-        |> render("show.json", auth_token: auth_token.token)
+        |> render("show.json",
+          auth_token: %{
+            token: auth_token.token,
+            user: %{id: auth_token.user.id, username: auth_token.user.username}
+          }
+        )
 
       {:error, reason} ->
         conn

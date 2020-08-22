@@ -8,6 +8,8 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { signIn } from "../../redux/actions/authActions";
 import { useStyles } from "./SignInStyles";
 
 const SignIn = () => {
@@ -17,13 +19,22 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [validationStatus, setValidationStatus] = useState(false);
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.auth.isLoading);
+
   useEffect(() => {
     setValidationStatus(username && password);
   }, [username, password]);
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    await dispatch(signIn(username, password));
+  };
+
   return (
     <Fragment>
-      <LoadingOverlay active={false} spinner text="Signing in...">
+      <LoadingOverlay active={isLoading} spinner text="Signing in...">
         <div className={classes.mainDivStyle}>
           <HeroHeader
             headerText="Sign In"
@@ -58,7 +69,7 @@ const SignIn = () => {
                   align="center"
                   justify="center"
                 >
-                  <form className={classes.formStyle}>
+                  <form className={classes.formStyle} onSubmit={onSubmit}>
                     <Grid
                       container
                       item
