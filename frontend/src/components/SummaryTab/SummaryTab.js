@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import { useStyles } from "./SummaryTabStyles.js";
 
-const SummaryTab = () => {
+const SummaryTab = ({ posts }) => {
   const classes = useStyles();
 
   return (
@@ -17,12 +17,15 @@ const SummaryTab = () => {
       <Divider className={classes.dividerStyle} />
       <Grid item xs={8} sm={8} md={8} lg={8} xl={8} align="left">
         <Typography variant="body2" className={classes.textStyle}>
-          Total Topics Started: <strong>NUMBER</strong>
+          Total Topics Started:{" "}
+          <strong>
+            {!posts ? 0 : posts.filter((post) => post.is_question).length}
+          </strong>
         </Typography>
       </Grid>
       <Grid item xs={8} sm={8} md={8} lg={8} xl={8} align="left">
         <Typography variant="body2" className={classes.textStyle}>
-          Total Posts: <strong>NUMBER</strong>
+          Total Posts: <strong>{!posts ? 0 : posts.length}</strong>
         </Typography>
       </Grid>
     </Grid>

@@ -54,10 +54,12 @@ export const getUser = (id, token) => {
       })
       .then(
         (response) => {
-          console.log(response);
+          dispatch(success({ user: response.data.data }));
+          return true;
         },
         (error) => {
-          console.log(error);
+          dispatch(failed(error));
+          return false;
         }
       );
   };
