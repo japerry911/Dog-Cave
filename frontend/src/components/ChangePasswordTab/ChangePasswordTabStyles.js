@@ -9,10 +9,37 @@ export const useStyles = makeStyles((theme) => ({
   },
   textFieldStyle: {
     width: "80%",
-    color: theme.colors.lightBlueGray,
+    "& .MuiFormLabel-root": {
+      color: theme.colors.lightBlueGray,
+    },
+    "& .MuiInput-underline:before": {
+      borderColor: theme.palette.primary.main,
+    },
   },
   dividerStyle: {
     backgroundColor: theme.colors.lightBlueGray,
     height: "0.15rem",
+  },
+  buttonStyle: {
+    marginBottom: "3rem",
+    backgroundColor: theme.palette.primary.main,
+    border: `1pt solid ${theme.palette.secondary.main}`,
+    color: theme.palette.secondary.main,
+    width: "80%",
+    borderRadius: 12,
+    padding: "1rem",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main,
+      border: `1pt solid ${theme.palette.primary.main}`,
+      color: theme.palette.primary.main,
+      transition: "220ms ease-in-out",
+    },
+    [theme.breakpoints.only("sm")]: {
+      width: "40%",
+    },
+    [theme.breakpoints.only("xs")]: {
+      width: "42%",
+      fontSize: ".6rem",
+    },
   },
 }));

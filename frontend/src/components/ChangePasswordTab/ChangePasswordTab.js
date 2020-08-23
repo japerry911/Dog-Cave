@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 import { useStyles } from "./ChangePasswordTabStyles";
 
 const ChangePasswordTab = () => {
@@ -53,6 +54,9 @@ const ChangePasswordTab = () => {
           required
           className={classes.textFieldStyle}
         />
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+        <Button className={classes.buttonStyle}>Change Password</Button>
       </Grid>
     </Grid>
   );
