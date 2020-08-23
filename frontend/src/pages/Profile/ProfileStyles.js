@@ -29,7 +29,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    //justifyContent: "space-between",
+    justifyContent: "space-between",
   },
   titleStyle: {
     fontWeight: "bold",

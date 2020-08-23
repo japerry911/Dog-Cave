@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../redux/actions/authActions";
 import MyTabs from "../../components/MyTabs/MyTabs";
 import SummaryTab from "../../components/SummaryTab/SummaryTab";
+import PostsTab from "../../components/PostsTab/PostsTab";
 import LoadingOverlay from "react-loading-overlay";
 import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ProfileStyles";
@@ -76,6 +77,7 @@ const Profile = () => {
                     <MyTabs
                       content={[
                         <SummaryTab posts={userObject.posts || undefined} />,
+                        <PostsTab posts={userObject.posts || undefined} />,
                       ]}
                     />
                   </Fragment>
