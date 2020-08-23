@@ -104,7 +104,8 @@ defmodule BackendWeb.UserController do
               inserted_at: post.inserted_at,
               updated_at: post.updated_at,
               topic_id: post.topic.id,
-              topic_title: post.topic.title
+              topic_title: post.topic.title,
+              category_id: post.topic.category_id
             }
           end)
       }
