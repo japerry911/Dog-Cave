@@ -2,7 +2,6 @@ defmodule BackendWeb.Router do
   use BackendWeb, :router
 
   pipeline :api do
-    plug CORSPlug, origin: "http://localhost:3000"
     plug :accepts, ["json"]
   end
 
@@ -24,7 +23,7 @@ defmodule BackendWeb.Router do
 
       resources "/posts", PostController, only: [:create, :update]
       resources "/topics", TopicController, only: [:create, :update]
-      resources "/users", UserController, only: [:update]
+      resources "/users", UserController, only: [:update, :show]
     end
 
     scope "/sessions" do

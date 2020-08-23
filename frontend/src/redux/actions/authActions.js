@@ -49,7 +49,7 @@ export const getUser = (id, token) => {
     dispatch(loadingStart());
 
     return phoenixServer
-      .get(`/api/users/${id}`, {
+      .get(`/api/authed/users/${id}`, {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(
