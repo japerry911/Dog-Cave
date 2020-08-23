@@ -13,8 +13,8 @@ const SummaryTab = ({ posts }) => {
         <Typography variant="h6" className={classes.headerTextStyle}>
           General Stats:
         </Typography>
+        <Divider className={classes.dividerStyle} />
       </Grid>
-      <Divider className={classes.dividerStyle} />
       <Grid item xs={8} sm={8} md={8} lg={8} xl={8} align="left">
         <Typography variant="body2" className={classes.textStyle}>
           Total Topics Started:{" "}
