@@ -38,7 +38,7 @@ category6 = Repo.insert!(%Category{name: "Category 6", description: "Description
   Users.create_user(%{
     username: "General",
     img_url:
-      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/sheri-hooley-KUm8K3EOaoE-unsplash.jpg",
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/breed_profile_germansheperd_1118000_hero_2536-6dc4ce05871945b8a894bd80c0ecc7f1.jpg",
     password: "password"
   })
 
