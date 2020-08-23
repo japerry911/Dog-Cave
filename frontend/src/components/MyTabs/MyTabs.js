@@ -30,7 +30,7 @@ const MyTabs = ({ content }) => {
         {content[1]}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        {content[2]}
       </TabPanel>
     </div>
   );
