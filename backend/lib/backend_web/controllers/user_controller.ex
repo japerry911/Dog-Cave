@@ -102,7 +102,9 @@ defmodule BackendWeb.UserController do
               content: post.content,
               is_question: post.is_question,
               inserted_at: post.inserted_at,
-              updated_at: post.updated_at
+              updated_at: post.updated_at,
+              topic_id: post.topic.id,
+              topic_title: post.topic.title
             }
           end)
       }
