@@ -8,12 +8,7 @@ const SummaryTab = () => {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="space-between"
-      className={classes.gridContainerStyle}
-    >
+    <Grid container direction="column" className={classes.gridContainerStyle}>
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Typography variant="h6" className={classes.headerTextStyle}>
           General Stats:

@@ -43,3 +43,22 @@ export const signIn = (username, password) => {
     );
   };
 };
+
+export const getUser = (id, token) => {
+  return (dispatch) => {
+    dispatch(loadingStart());
+
+    return phoenixServer
+      .get(`/api/users/${id}`, {
+        headers: { authorization: `Bearer ${token}` },
+      })
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+};
