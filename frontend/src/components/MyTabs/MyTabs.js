@@ -27,7 +27,7 @@ const MyTabs = ({ content }) => {
         {content[0]}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {content[1]}
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
