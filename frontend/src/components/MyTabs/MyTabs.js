@@ -18,9 +18,9 @@ const MyTabs = ({ content }) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
+          <Tab label="General Stats" />
+          <Tab label="Posts" />
+          <Tab label="Change Password" />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

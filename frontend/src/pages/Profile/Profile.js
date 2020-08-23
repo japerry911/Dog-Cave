@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react";
+import React, { useEffect, Fragment } from "react";
 import HeroHeader from "../../components/HeroHeader/HeroHeader";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -43,7 +43,7 @@ const Profile = () => {
         dispatch(handleOpen({ type: "error", message: error }));
       }
     );
-  }, [dispatch, userObject.id]);
+  }, [dispatch, userObject.id, token]);
 
   return (
     <Fragment>
