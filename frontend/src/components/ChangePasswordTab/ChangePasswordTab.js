@@ -40,46 +40,62 @@ const ChangePasswordTab = () => {
     }
   }, [dispatch, currentPassword, newPassword, confirmNewPassword]);
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
 
-    const formData = new FormData();
+    const formData1 = new FormData();
 
-    formData.set("username", userObject.username);
-    formData.set("img_url", userObject.img_url);
-    formData.set("password", newPassword);
+    formData1.set("username", userObject.username);
+    formData1.set("password", currentPassword);
 
-    phoenixServer
-      .put(`/api/authed/users/${userObject.id}`, formData, {
+    try {
+      await phoenixServer.post("/api/authed/users/verify-password", formData1, {
         headers: { authorization: `Bearer ${token}` },
-      })
-      .then(
-        (response) => {
-          dispatch(
-            handleOpen({
-              type: "success",
-              message: "Password updated successfully",
-            })
-          );
-          setCurrentPassword("");
-          setNewPassword("");
-          setConfirmNewPassword("");
-          setIsLoading(false);
-        },
-        (error) => {
-          dispatch(
-            handleOpen({
-              type: "error",
-              message: `Password update failed - ${error}`,
-            })
-          );
-          setCurrentPassword("");
-          setNewPassword("");
-          setConfirmNewPassword("");
-          setIsLoading(false);
-        }
+      });
+    } catch (error) {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: `Current password does not verify - ${error}`,
+        })
       );
+      setIsLoading(false);
+      return;
+    }
+
+    const formData2 = new FormData();
+
+    formData2.set("username", userObject.username);
+    formData2.set("img_url", userObject.img_url);
+    formData2.set("password", newPassword);
+
+    try {
+      await phoenixServer.put(`/api/authed/users/${userObject.id}`, formData2, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      dispatch(
+        handleOpen({
+          type: "success",
+          message: "Password updated successfully",
+        })
+      );
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
+      setIsLoading(false);
+    } catch (error) {
+      dispatch(
+        handleOpen({
+          type: "error",
+          message: `Password update failed - ${error}`,
+        })
+      );
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
+      setIsLoading(false);
+    }
   };
 
   return (
