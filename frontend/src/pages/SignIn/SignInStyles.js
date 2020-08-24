@@ -22,13 +22,19 @@ export const useStyles = makeStyles((theme) => ({
     padding: "1.5rem 0",
     marginTop: "3rem",
     minHeight: "30rem",
-    width: "40%",
+    width: "31%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.only("md")]: {
+      width: "40%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
   },
   titleStyle: {
     fontWeight: "bold",
@@ -41,19 +47,20 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     width: "80%",
     borderRadius: 12,
-    padding: "1rem",
+    padding: "1rem 0rem",
     "&:hover": {
       backgroundColor: theme.palette.secondary.main,
       border: `1pt solid ${theme.palette.primary.main}`,
       color: theme.palette.primary.main,
       transition: "220ms ease-in-out",
     },
-    [theme.breakpoints.only("sm")]: {
-      width: "40%",
+    [theme.breakpoints.only("md")]: {
+      width: "60%",
+      fontSize: "0.65rem",
     },
-    [theme.breakpoints.only("xs")]: {
-      width: "42%",
-      fontSize: ".6rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "92%",
+      fontSize: "0.45rem",
     },
   },
   dividerStyle: {
