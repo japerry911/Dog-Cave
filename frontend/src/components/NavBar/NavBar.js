@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavToolbar from "../NavToolbar/NavToolbar";
 import NavDrawer from "../NavDrawer/NavDrawer";
 import { useLocation } from "react-router-dom";
-import { ROUTES_ARRAY } from "../../router/routesArray";
+import { TITLE_ARRAY } from "../../router/routesArray";
 import { useStyles } from "./NavBarStyles";
 
 const NavBar = () => {
@@ -11,11 +11,22 @@ const NavBar = () => {
   const location = useLocation();
 
   const [drawer, setDrawer] = useState(false);
-  const [title, setTitle] = useState("Home");
+  const [title, setTitle] = useState(
+    TITLE_ARRAY.find(
+      (routeObject) =>
+        routeObject.title === location.pathname.replace(/\/[0-9]+/g, "")
+    ) === undefined
+      ? "Get Back to the Cave!"
+      : TITLE_ARRAY.find(
+          (routeObject) =>
+            routeObject.title === location.pathname.replace(/\/[0-9]+/g, "")
+        ).title
+  );
 
   useEffect(() => {
-    const routeObject = ROUTES_ARRAY.find(
-      (routeObject) => routeObject.link === location.pathname
+    const routeObject = TITLE_ARRAY.find(
+      (routeObject) =>
+        routeObject.link === location.pathname.replace(/\/[0-9]+/g, "")
     );
 
     if (routeObject) {
