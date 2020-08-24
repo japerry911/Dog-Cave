@@ -23,7 +23,6 @@ export const useStyles = makeStyles((theme) => ({
     border: `3pt solid ${theme.palette.secondary.main}`,
     paddingTop: "3rem",
     marginTop: "3rem",
-    marginBottom: "5rem",
     height: "85%",
     width: "55%",
     backgroundColor: theme.palette.primary.main,
