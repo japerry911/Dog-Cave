@@ -24,7 +24,6 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
   },
   titleStyle: {
     fontWeight: "bold",
@@ -47,8 +46,6 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.colors.lightGray,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-between",
     borderRadius: 12,
   },
   gridItemStyle: {
@@ -76,5 +73,14 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+  },
+  iconButtonStyle: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerGridStyle: {
+    display: "flex",
+    alignItems: "flex-end",
   },
 }));

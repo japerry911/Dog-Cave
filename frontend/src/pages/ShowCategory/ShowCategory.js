@@ -104,8 +104,16 @@ const ShowCategory = () => {
                       xl={12}
                       className={classes.minFlexBasisStyle}
                     >
-                      <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
-                        <IconButton>
+                      <Grid
+                        item
+                        xs={1}
+                        sm={1}
+                        md={1}
+                        lg={1}
+                        xl={1}
+                        className={classes.headerGridStyle}
+                      >
+                        <IconButton className={classes.iconButtonStyle}>
                           <AddIcon />
                         </IconButton>
                       </Grid>
@@ -117,6 +125,7 @@ const ShowCategory = () => {
                         lg={8}
                         xl={8}
                         align="left"
+                        className={classes.headerGridStyle}
                       >
                         <Typography
                           variant="h4"
@@ -125,7 +134,15 @@ const ShowCategory = () => {
                           Topic:
                         </Typography>
                       </Grid>
-                      <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                      <Grid
+                        item
+                        xs={3}
+                        sm={3}
+                        md={3}
+                        lg={3}
+                        xl={3}
+                        className={classes.headerGridStyle}
+                      >
                         <Typography
                           variant="h4"
                           className={classes.headerTextStyle}
@@ -133,7 +150,6 @@ const ShowCategory = () => {
                           # of Posts:
                         </Typography>
                       </Grid>
-
                       <Divider className={classes.dividerStyle} />
                     </Grid>
                     {topicsArray.map((topicArray) => {
@@ -175,18 +191,6 @@ const ShowCategory = () => {
                                 {topicArray[2]}
                               </Typography>
                             </Grid>
-                          </Grid>
-                          <Grid
-                            item
-                            container
-                            xs={12}
-                            sm={12}
-                            md={12}
-                            lg={12}
-                            xl={12}
-                            justify="center"
-                            className={classes.minFlexBasisStyle}
-                          >
                             <Divider className={classes.lightDividerStyle} />
                           </Grid>
                         </Fragment>
