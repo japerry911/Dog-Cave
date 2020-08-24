@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import { useSelector, useDispatch } from "react-redux";
+import phoenixServer from "../../api/phoenixServer";
+import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ChangePasswordTabStyles";
 
 const ChangePasswordTab = () => {
@@ -14,8 +17,22 @@ const ChangePasswordTab = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [validationStatus, setValidationStatus] = useState(false);
 
+  const username = useSelector((state) => state.auth.user.username);
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    // Check Current Password somehow
+    if (!currentPassword || (!newPassword && !confirmNewPassword)) {
+      setValidationStatus(false);
+      return;
+    }
+
+    if (newPassword !== confirmNewPassword && confirmNewPassword.length > 0) {
+      dispatch(
+        handleOpen({ type: "error", message: "New passwords do not match" })
+      );
+      return;
+    }
   }, []);
 
   return (
