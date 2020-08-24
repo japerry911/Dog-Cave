@@ -24,32 +24,45 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.1rem 0",
+      width: "94%",
+    },
   },
   titleStyle: {
     fontWeight: "bold",
     color: theme.colors.lightGray,
   },
   figureStyle: {
+    padding: "1rem 0",
     width: "100%",
     marginBlockStart: 0,
     marginBlockEnd: 0,
     marginInlineStart: 0,
     marginInlineEnd: 0,
+    [theme.breakpoints.down("sm")]: {
+      width: "40%",
+    },
   },
   logoStyle: {
     width: "100%",
   },
   subPaperStyle: {
-    width: "90%",
+    width: "80%",
     height: "90%",
-    padding: "1rem",
+    padding: "0.5rem",
     backgroundColor: theme.colors.lightGray,
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
     borderRadius: 12,
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
   },
   gridItemStyle: {
-    flexBasis: "40%",
+    flexBasis: "15%",
   },
   dividerStyle: {
     width: "100%",
@@ -67,12 +80,18 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
   headerTextLeftStyle: {
     paddingLeft: "0.75rem",
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
   headerGridStyle: {
     display: "flex",
