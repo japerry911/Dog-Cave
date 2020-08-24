@@ -30,6 +30,10 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      width: "93%",
+      padding: "0.5rem",
+    },
   },
   titleStyle: {
     fontWeight: "bold",

@@ -6,8 +6,8 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     backgroundColor: theme.palette.secondary.main,
     paddingBottom: "3rem",
-    [theme.breakpoints.only("xs")]: {
-      minHeight: "85rem",
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "45rem",
     },
   },
   logoImgStyle: {
@@ -59,7 +59,8 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "0.65rem",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "92%",
+      width: "70%",
+      height: "1rem",
       fontSize: "0.45rem",
     },
   },
