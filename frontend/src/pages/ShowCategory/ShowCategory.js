@@ -6,6 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
 import { Link, useParams } from "react-router-dom";
 import { useStyles } from "./ShowCategoryStyles";
 
@@ -102,13 +104,18 @@ const ShowCategory = () => {
                       xl={12}
                       className={classes.minFlexBasisStyle}
                     >
+                      <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
+                        <IconButton>
+                          <AddIcon />
+                        </IconButton>
+                      </Grid>
                       <Grid
                         item
-                        xs={9}
-                        sm={9}
-                        md={9}
-                        lg={9}
-                        xl={9}
+                        xs={8}
+                        sm={8}
+                        md={8}
+                        lg={8}
+                        xl={8}
                         align="left"
                       >
                         <Typography
@@ -123,9 +130,10 @@ const ShowCategory = () => {
                           variant="h4"
                           className={classes.headerTextStyle}
                         >
-                          Number of Posts:
+                          # of Posts:
                         </Typography>
                       </Grid>
+
                       <Divider className={classes.dividerStyle} />
                     </Grid>
                     {topicsArray.map((topicArray) => {
