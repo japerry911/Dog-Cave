@@ -32,7 +32,11 @@ export const signIn = (username, password) => {
     return phoenixServer.post("/api/sessions/sign-in", formData).then(
       (response) => {
         dispatch(
-          success({ token: response.data.token, user: response.data.user })
+          success({
+            token: response.data.token,
+            user: response.data.user,
+            isAuthed: true,
+          })
         );
         return true;
       },

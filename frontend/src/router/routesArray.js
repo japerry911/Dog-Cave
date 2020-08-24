@@ -16,5 +16,21 @@ export const ROUTES_ARRAY = [
 ];
 
 export const AUTH_ROUTES_ARRAY = [
-  { link: "/profiles/", title: "Your Profile", icon: PersonIcon },
+  { link: "/", title: "Home", icon: HomeIcon },
+  { link: "/about", title: "About", icon: InfoIcon },
+  { link: "/contact-us", title: "Contact Us", icon: PhoneIcon },
+  { link: "/forums", title: "Forums", icon: ForumsIcon },
+  { link: "/profiles/:id", title: "Your Profile", icon: PersonIcon },
+];
+
+export const TITLE_ARRAY = [
+  { link: "/", title: "Home" },
+  { link: "/about", title: "About" },
+  { link: "/contact-us", title: "Contact Us" },
+  { link: "/forums", title: "Forums" },
+  { link: "/sign-in", title: "Sign In" },
+  { link: "/sign-up", title: "Sign Up" },
+  { link: "/forums/categories", title: "Show Category" },
+  { link: "/profiles", title: "Your Profile" },
+  { link: "/forums/categories/topics", title: "Show Topic" },
 ];
