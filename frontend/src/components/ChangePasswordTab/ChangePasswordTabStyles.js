@@ -15,6 +15,9 @@ export const useStyles = makeStyles((theme) => ({
     "& .MuiInput-underline:before": {
       borderColor: theme.palette.primary.main,
     },
+    "& .MuiInputBase-input": {
+      color: theme.colors.lightBlueGray,
+    },
   },
   dividerStyle: {
     backgroundColor: theme.colors.lightBlueGray,
@@ -41,5 +44,12 @@ export const useStyles = makeStyles((theme) => ({
       width: "42%",
       fontSize: ".6rem",
     },
+  },
+  formContainerStyle: {
+    width: "100%",
+    minHeight: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justify: "space-between",
   },
 }));
