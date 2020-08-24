@@ -38,7 +38,7 @@ defmodule BackendWeb.TopicController do
     )
   end
 
-  def create(conn, %{"topic" => topic_params}) do
+  def create(conn, topic_params) do
     with {:ok, %Topic{} = topic} <- Topics.create_topic(topic_params) do
       conn
       |> put_status(:created)

@@ -6,6 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
+import PostFormDialog from "../../components/PostFormDialog/PostFormDialog";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useStyles } from "./ShowCategoryStyles";
 
@@ -16,6 +18,8 @@ const ShowCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [topicsArray, setTopicsArray] = useState([]);
   const [showCategory, setShowCategory] = useState({});
+
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
 
   useEffect(() => {
     setIsLoading(true);
@@ -104,12 +108,24 @@ const ShowCategory = () => {
                     >
                       <Grid
                         item
-                        xs={9}
-                        sm={9}
-                        md={9}
-                        lg={9}
-                        xl={9}
+                        xs={1}
+                        sm={1}
+                        md={1}
+                        lg={1}
+                        xl={1}
+                        className={classes.headerGridStyle}
+                      >
+                        {isAuthed ? <PostFormDialog /> : null}
+                      </Grid>
+                      <Grid
+                        item
+                        xs={8}
+                        sm={8}
+                        md={8}
+                        lg={8}
+                        xl={8}
                         align="left"
+                        className={classes.headerGridStyle}
                       >
                         <Typography
                           variant="h4"
@@ -118,12 +134,20 @@ const ShowCategory = () => {
                           Topic:
                         </Typography>
                       </Grid>
-                      <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                      <Grid
+                        item
+                        xs={3}
+                        sm={3}
+                        md={3}
+                        lg={3}
+                        xl={3}
+                        className={classes.headerGridStyle}
+                      >
                         <Typography
                           variant="h4"
                           className={classes.headerTextStyle}
                         >
-                          Number of Posts:
+                          # of Posts:
                         </Typography>
                       </Grid>
                       <Divider className={classes.dividerStyle} />
@@ -167,18 +191,6 @@ const ShowCategory = () => {
                                 {topicArray[2]}
                               </Typography>
                             </Grid>
-                          </Grid>
-                          <Grid
-                            item
-                            container
-                            xs={12}
-                            sm={12}
-                            md={12}
-                            lg={12}
-                            xl={12}
-                            justify="center"
-                            className={classes.minFlexBasisStyle}
-                          >
                             <Divider className={classes.lightDividerStyle} />
                           </Grid>
                         </Fragment>
