@@ -13,9 +13,6 @@ export const useStyles = makeStyles((theme) => ({
   logoImgStyle: {
     width: "40%",
     height: "auto",
-    [theme.breakpoints.only("xs")]: {
-      width: "100%",
-    },
   },
   paperStyle: {
     border: `3pt solid ${theme.palette.secondary.main}`,
