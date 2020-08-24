@@ -151,7 +151,7 @@ const ForumsMain = () => {
                               </Typography>
                             </Grid>
                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                              <Typography variant="h5">
+                              <Typography variant="subtitle2">
                                 {categoryArray[2]}
                               </Typography>
                             </Grid>
