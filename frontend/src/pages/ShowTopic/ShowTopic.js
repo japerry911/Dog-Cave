@@ -190,7 +190,7 @@ const ShowTopic = () => {
                       className={classes.minFlexBasisStyle}
                       alignItems="center"
                     >
-                      <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                      <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
                         <img
                           alt="User profile"
                           src={
@@ -210,8 +210,8 @@ const ShowTopic = () => {
                       </Grid>
                       <Grid
                         item
-                        xs={7}
-                        sm={7}
+                        xs={8}
+                        sm={8}
                         md={7}
                         lg={7}
                         xl={7}
@@ -224,7 +224,7 @@ const ShowTopic = () => {
                           {questionArray[1]}
                         </Typography>
                       </Grid>
-                      <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                      <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
                         <Typography
                           variant="subtitle2"
                           className={classes.timeTextStyle}
@@ -254,7 +254,7 @@ const ShowTopic = () => {
                             className={classes.minFlexBasisStyle}
                             alignItems="center"
                           >
-                            <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                            <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
                               <img
                                 alt="User profile"
                                 src={postArray[5].img_url}
@@ -266,8 +266,8 @@ const ShowTopic = () => {
                             </Grid>
                             <Grid
                               item
-                              xs={7}
-                              sm={7}
+                              xs={8}
+                              sm={8}
                               md={7}
                               lg={7}
                               xl={7}
@@ -280,7 +280,7 @@ const ShowTopic = () => {
                                 {postArray[1]}
                               </Typography>
                             </Grid>
-                            <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                            <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
                               <Typography
                                 variant="subtitle2"
                                 className={classes.timeTextStyle}
@@ -315,7 +315,7 @@ const ShowTopic = () => {
                           className={classes.formContainerStyle}
                           onSubmit={onSubmit}
                         >
-                          <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                          <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
                             <img
                               alt="User profile"
                               src={userObject.img_url}
@@ -325,10 +325,10 @@ const ShowTopic = () => {
                               {userObject.username}
                             </Typography>
                           </Grid>
-                          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+                          <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
                             <TextareaAutosize
-                              rowsMin={10}
-                              rowsMax={10}
+                              rowsMin={5}
+                              rowsMax={5}
                               value={newPost}
                               onChange={(newNewPost) =>
                                 setNewPost(newNewPost.target.value)
@@ -338,8 +338,8 @@ const ShowTopic = () => {
                           </Grid>
                           <Grid
                             item
-                            xs={2}
-                            sm={2}
+                            xs={12}
+                            sm={12}
                             md={2}
                             lg={2}
                             xl={2}
