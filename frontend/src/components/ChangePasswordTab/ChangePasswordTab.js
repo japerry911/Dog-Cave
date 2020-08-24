@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -12,6 +12,11 @@ const ChangePasswordTab = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [validationStatus, setValidationStatus] = useState(false);
+
+  useEffect(() => {
+    // Check Current Password somehow
+  }, []);
 
   return (
     <Grid container className={classes.gridContainerStyle}>

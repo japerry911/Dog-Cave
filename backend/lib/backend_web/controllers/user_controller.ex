@@ -139,4 +139,11 @@ defmodule BackendWeb.UserController do
       |> send_resp(200, "OK")
     end
   end
+
+  def verify_password(conn, %{"username" => username, "password" => password}) do
+    case Users.verify_password(username, password) do
+      {:ok, _user} -> send_resp(conn, 200, "OK")
+      {:error, reason} -> send_resp(conn, 401, reason)
+    end
+  end
 end
