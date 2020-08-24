@@ -23,10 +23,12 @@ const ShowTopic = () => {
   const [postsArray, setPostsArray] = useState([]);
   const [questionArray, setQuestionArray] = useState([]);
   const [newPost, setNewPost] = useState("");
+  const [replyPosted, setReplyPosted] = useState(0);
 
   const dispatch = useDispatch();
   const userObject = useSelector((state) => state.auth.user);
   const isAuthed = useSelector((state) => state.auth.isAuthed);
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     setIsLoading(true);
@@ -62,13 +64,36 @@ const ShowTopic = () => {
         setIsLoading(false);
       }
     );
-  }, [params]);
+  }, [params, dispatch, replyPosted]);
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
     setIsLoading(true);
-    setIsLoading(false);
+
+    const formData = new FormData();
+
+    formData.set("content", newPost);
+    formData.set("is_question", false);
+    formData.set("user_id", userObject.id);
+    formData.set("topic_id", params.topicId);
+
+    try {
+      await phoenixServer.post("/api/authed/posts", formData, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      dispatch(
+        handleOpen({ type: "success", message: "Post successfully posted" })
+      );
+      setReplyPosted(replyPosted + 1);
+      setNewPost("");
+      setIsLoading(false);
+    } catch (error) {
+      dispatch(
+        handleOpen({ type: "error", message: `Posting failed - ${error}` })
+      );
+      setIsLoading(false);
+    }
   };
 
   return (
