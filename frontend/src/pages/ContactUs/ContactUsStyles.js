@@ -21,9 +21,6 @@ export const useStyles = makeStyles((theme) => ({
   logoImgStyle: {
     width: "40%",
     height: "auto",
-    [theme.breakpoints.only("xs")]: {
-      width: "100%",
-    },
   },
   paperStyle: {
     border: `3pt solid ${theme.palette.secondary.main}`,
@@ -37,6 +34,12 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.only("md")]: {
+      width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "85%",
+    },
   },
   titleStyle: {
     fontWeight: "bold",

@@ -14,6 +14,12 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     paddingRight: "5rem",
     alignItems: "center",
+    [theme.breakpoints.only("md")]: {
+      paddingRight: "3rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingRight: "1rem",
+    },
   },
   imageStyle: {
     width: "100%",
@@ -21,5 +27,11 @@ export const useStyles = makeStyles((theme) => ({
   linkStyle: {
     width: "7%",
     padding: "0 1rem",
+    [theme.breakpoints.only("md")]: {
+      width: "10%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "30%",
+    },
   },
 }));

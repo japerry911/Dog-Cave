@@ -25,6 +25,9 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      width: "93%",
+    },
   },
   titleStyle: {
     fontWeight: "bold",
@@ -36,6 +39,9 @@ export const useStyles = makeStyles((theme) => ({
     marginBlockEnd: 0,
     marginInlineStart: 0,
     marginInlineEnd: 0,
+    [theme.breakpoints.down("sm")]: {
+      width: "40%",
+    },
   },
   logoStyle: {
     width: "100%",
@@ -50,9 +56,12 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius: 12,
+    [theme.breakpoints.down("sm")]: {
+      padding: "0.5rem",
+    },
   },
   gridItemStyle: {
-    flexBasis: "40%",
+    flexBasis: "15%",
   },
   dividerStyle: {
     width: "100%",
@@ -61,6 +70,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   minFlexBasisStyle: {
     flexBasis: "100%",
+    [theme.breakpoints.down("sm")]: {
+      flexBasis: "10%",
+    },
   },
   lightDividerStyle: {
     width: "100%",
@@ -125,5 +137,6 @@ export const useStyles = makeStyles((theme) => ({
   buttonGridStyle: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
   },
 }));

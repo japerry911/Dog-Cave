@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     paddingBottom: "3rem",
     [theme.breakpoints.only("xs")]: {
-      minHeight: "85rem",
+      minHeight: "55rem",
     },
   },
   mainContainerStyle: {
@@ -18,13 +18,16 @@ export const useStyles = makeStyles((theme) => ({
     padding: "3rem 0",
     marginTop: "3rem",
     height: "55rem",
-    width: "60%",
+    width: "70%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
   },
   titleStyle: {
     fontWeight: "bold",
@@ -36,6 +39,9 @@ export const useStyles = makeStyles((theme) => ({
     marginBlockEnd: 0,
     marginInlineStart: 0,
     marginInlineEnd: 0,
+    [theme.breakpoints.down("sm")]: {
+      width: "40%",
+    },
   },
   logoStyle: {
     width: "100%",
@@ -50,9 +56,12 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius: 12,
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
   },
   gridItemStyle: {
-    flexBasis: "45%",
+    flexBasis: "15%",
   },
   dividerStyle: {
     width: "90%",
@@ -71,5 +80,8 @@ export const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
 }));
