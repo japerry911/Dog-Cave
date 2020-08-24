@@ -12,6 +12,7 @@ import PostsTab from "../../components/PostsTab/PostsTab";
 import LoadingOverlay from "react-loading-overlay";
 import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ProfileStyles";
+import ChangePasswordTab from "../../components/ChangePasswordTab/ChangePasswordTab";
 
 const Profile = () => {
   const classes = useStyles();
@@ -78,6 +79,7 @@ const Profile = () => {
                       content={[
                         <SummaryTab posts={userObject.posts || undefined} />,
                         <PostsTab posts={userObject.posts || undefined} />,
+                        <ChangePasswordTab />,
                       ]}
                     />
                   </Fragment>

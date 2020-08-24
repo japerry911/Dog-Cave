@@ -24,6 +24,7 @@ defmodule BackendWeb.Router do
       resources "/posts", PostController, only: [:create, :update]
       resources "/topics", TopicController, only: [:create, :update]
       resources "/users", UserController, only: [:update, :show]
+      post "/users/verify-password", UserController, :verify_password
     end
 
     scope "/sessions" do

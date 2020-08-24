@@ -3,7 +3,6 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 export const useStyles = makeStyles((theme) => ({
   headerTextStyle: {
     color: theme.colors.lightBlueGray,
-    paddingBottom: "1rem",
   },
   textStyle: {
     padding: "1rem 0",

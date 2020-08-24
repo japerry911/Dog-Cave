@@ -112,8 +112,8 @@ defmodule BackendWeb.UserController do
     )
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Users.get_user!(id)
+  def update(conn, user_params) do
+    user = Users.get_user!(user_params["id"])
 
     with {:ok, %User{} = user} <- Users.update_user(user, user_params) do
       render(conn, "show.json", user: user)
@@ -137,6 +137,13 @@ defmodule BackendWeb.UserController do
     else
       conn
       |> send_resp(200, "OK")
+    end
+  end
+
+  def verify_password(conn, %{"username" => username, "password" => password}) do
+    case Users.verify_password(username, password) do
+      {:ok, _user} -> send_resp(conn, 200, "OK")
+      {:error, reason} -> send_resp(conn, 401, reason)
     end
   end
 end

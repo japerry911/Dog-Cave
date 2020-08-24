@@ -76,7 +76,7 @@ defmodule Backend.Users do
   """
   def update_user(%User{} = user, attrs) do
     user
-    |> User.changeset(attrs)
+    |> User.registration_changeset(attrs)
     |> Repo.update()
   end
 
@@ -110,12 +110,19 @@ defmodule Backend.Users do
   end
 
   @doc """
-  Looks up User by Username and return True or False
+  Looks up User by Username and returns True or False
   """
   def get_by_username(username) do
     case Repo.get_by(User, username: username) do
       nil -> false
       _ -> true
     end
+  end
+
+  @doc """
+  Verifies password and returns True or False
+  """
+  def verify_password(username, password) do
+    User.sign_in(username, password)
   end
 end
