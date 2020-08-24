@@ -6,8 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
-import IconButton from "@material-ui/core/IconButton";
-import AddIcon from "@material-ui/icons/Add";
+import PostFormDialog from "../../components/PostFormDialog/PostFormDialog";
 import { Link, useParams } from "react-router-dom";
 import { useStyles } from "./ShowCategoryStyles";
 
@@ -113,9 +112,7 @@ const ShowCategory = () => {
                         xl={1}
                         className={classes.headerGridStyle}
                       >
-                        <IconButton className={classes.iconButtonStyle}>
-                          <AddIcon />
-                        </IconButton>
+                        <PostFormDialog />
                       </Grid>
                       <Grid
                         item

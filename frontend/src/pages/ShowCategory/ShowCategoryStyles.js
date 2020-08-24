@@ -74,11 +74,6 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#000",
   },
-  iconButtonStyle: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   headerGridStyle: {
     display: "flex",
     alignItems: "flex-end",
