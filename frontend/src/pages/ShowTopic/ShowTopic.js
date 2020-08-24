@@ -8,8 +8,9 @@ import HeroHeader from "../../components/HeroHeader/HeroHeader";
 import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
+import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ShowTopicStyles";
 
 const ShowTopic = () => {
@@ -23,6 +24,7 @@ const ShowTopic = () => {
   const [questionArray, setQuestionArray] = useState([]);
   const [newPost, setNewPost] = useState("");
 
+  const dispatch = useDispatch();
   const userObject = useSelector((state) => state.auth.user);
   const isAuthed = useSelector((state) => state.auth.isAuthed);
 
@@ -45,11 +47,23 @@ const ShowTopic = () => {
         setIsLoading(false);
       },
       (error) => {
-        console.log(error);
+        dispatch(
+          handleOpen({
+            type: "error",
+            message: `Error loading topic's posts, please refresh the page - ${error}`,
+          })
+        );
         setIsLoading(false);
       }
     );
   }, [params]);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+    setIsLoading(false);
+  };
 
   return (
     <Fragment>
@@ -250,58 +264,63 @@ const ShowTopic = () => {
                         </Fragment>
                       );
                     })}
-                    <Grid
-                      item
-                      container
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      lg={12}
-                      xl={12}
-                      className={classes.minFlexBasisStyle}
-                      alignItems="center"
-                    >
-                      <form className={classes.formContainerStyle}>
-                        <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
-                          <img
-                            alt="User profile"
-                            src={userObject.img_url}
-                            className={classes.profieImgStyle}
-                          />
-                          <Typography variant="subtitle2">
-                            {userObject.username}
-                          </Typography>
-                        </Grid>
-                        <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
-                          <TextareaAutosize
-                            rowsMin={10}
-                            rowsMax={10}
-                            value={newPost}
-                            onChange={(newNewPost) =>
-                              setNewPost(newNewPost.target.value)
-                            }
-                            className={classes.bigTextFieldStyle}
-                          />
-                        </Grid>
-                        <Grid
-                          item
-                          xs={2}
-                          sm={2}
-                          md={2}
-                          lg={2}
-                          xl={2}
-                          className={classes.buttonGridStyle}
+                    {isAuthed ? (
+                      <Grid
+                        item
+                        container
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        xl={12}
+                        className={classes.minFlexBasisStyle}
+                        alignItems="center"
+                      >
+                        <form
+                          className={classes.formContainerStyle}
+                          onSubmit={onSubmit}
                         >
-                          <Button
-                            className={classes.buttonStyle}
-                            type="submit"
-                            disabled={!newPost}
+                          <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                            <img
+                              alt="User profile"
+                              src={userObject.img_url}
+                              className={classes.profieImgStyle}
+                            />
+                            <Typography variant="subtitle2">
+                              {userObject.username}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+                            <TextareaAutosize
+                              rowsMin={10}
+                              rowsMax={10}
+                              value={newPost}
+                              onChange={(newNewPost) =>
+                                setNewPost(newNewPost.target.value)
+                              }
+                              className={classes.bigTextFieldStyle}
+                            />
+                          </Grid>
+                          <Grid
+                            item
+                            xs={2}
+                            sm={2}
+                            md={2}
+                            lg={2}
+                            xl={2}
+                            className={classes.buttonGridStyle}
                           >
-                            Post
-                          </Button>
-                        </Grid>
-                      </form>
-                    </Grid>
+                            <Button
+                              className={classes.buttonStyle}
+                              type="submit"
+                              disabled={!newPost}
+                            >
+                              Post
+                            </Button>
+                          </Grid>
+                        </form>
+                      </Grid>
+                    ) : null}
                   </Paper>
                 </Grid>
               </Paper>
