@@ -27,5 +27,11 @@ export const useStyles = makeStyles((theme) => ({
   linkStyle: {
     width: "7%",
     padding: "0 1rem",
+    [theme.breakpoints.only("md")]: {
+      width: "10%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "30%",
+    },
   },
 }));
