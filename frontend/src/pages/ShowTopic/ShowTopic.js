@@ -42,7 +42,13 @@ const ShowTopic = () => {
         ]);
 
         setShowTopic(response.data.data);
-        setPostsArray(rawPostsArray.filter((postArray) => !postArray[2]));
+        setPostsArray(
+          rawPostsArray
+            .filter((postArray) => !postArray[2])
+            .sort((a, b) => {
+              return new Date(a[3]) - new Date(b[3]);
+            })
+        );
         setQuestionArray(rawPostsArray.find((postArray) => postArray[2]));
         setIsLoading(false);
       },

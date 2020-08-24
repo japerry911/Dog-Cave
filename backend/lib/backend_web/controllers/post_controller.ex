@@ -17,7 +17,8 @@ defmodule BackendWeb.PostController do
             content: post.content,
             is_question: post.is_question,
             topic: %{id: post.topic.id, title: post.topic.title},
-            user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url}
+            user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url},
+            inserted_at: post.inserted_at
           }
         end)
     )
