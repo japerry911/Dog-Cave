@@ -33,8 +33,9 @@ const PostsTab = ({ posts }) => {
                     className={classes.postGridContainerStyle}
                     component={Link}
                     to={`/forums/categories/${postObject.category_id}/topics/${postObject.topic_id}`}
+                    alignItems="center"
                   >
-                    <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                    <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                       <Typography
                         variant="subtitle2"
                         className={classes.postContentTextStyle}
@@ -42,7 +43,7 @@ const PostsTab = ({ posts }) => {
                         {postObject.topic_title}
                       </Typography>
                     </Grid>
-                    <Grid item xs={7} sm={7} md={7} lg={7} xl={7}>
+                    <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
                       <Typography
                         variant="body2"
                         className={classes.postContentTextStyle}
