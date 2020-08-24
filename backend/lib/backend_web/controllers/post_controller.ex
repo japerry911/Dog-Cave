@@ -23,7 +23,7 @@ defmodule BackendWeb.PostController do
     )
   end
 
-  def create(conn, %{"post" => post_params}) do
+  def create(conn, post_params) do
     with {:ok, %Post{} = post} <- Posts.create_post(post_params) do
       conn
       |> put_status(:created)
