@@ -7,16 +7,28 @@ import Divider from "@material-ui/core/Divider";
 import HeroHeader from "../../components/HeroHeader/HeroHeader";
 import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
+import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ShowTopicStyles";
 
 const ShowTopic = () => {
   const classes = useStyles();
+
   const params = useParams();
 
   const [isLoading, setIsLoading] = useState(false);
   const [showTopic, setShowTopic] = useState({});
   const [postsArray, setPostsArray] = useState([]);
   const [questionArray, setQuestionArray] = useState([]);
+  const [newPost, setNewPost] = useState("");
+  const [replyPosted, setReplyPosted] = useState(0);
+
+  const dispatch = useDispatch();
+  const userObject = useSelector((state) => state.auth.user);
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,16 +44,57 @@ const ShowTopic = () => {
         ]);
 
         setShowTopic(response.data.data);
-        setPostsArray(rawPostsArray.filter((postArray) => !postArray[2]));
+        setPostsArray(
+          rawPostsArray
+            .filter((postArray) => !postArray[2])
+            .sort((a, b) => {
+              return new Date(a[3]) - new Date(b[3]);
+            })
+        );
         setQuestionArray(rawPostsArray.find((postArray) => postArray[2]));
         setIsLoading(false);
       },
       (error) => {
-        console.log(error);
+        dispatch(
+          handleOpen({
+            type: "error",
+            message: `Error loading topic's posts, please refresh the page - ${error}`,
+          })
+        );
         setIsLoading(false);
       }
     );
-  }, [params]);
+  }, [params, dispatch, replyPosted]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+
+    const formData = new FormData();
+
+    formData.set("content", newPost);
+    formData.set("is_question", false);
+    formData.set("user_id", userObject.id);
+    formData.set("topic_id", params.topicId);
+
+    try {
+      await phoenixServer.post("/api/authed/posts", formData, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      dispatch(
+        handleOpen({ type: "success", message: "Post successfully posted" })
+      );
+      setReplyPosted(replyPosted + 1);
+      setNewPost("");
+      setIsLoading(false);
+    } catch (error) {
+      dispatch(
+        handleOpen({ type: "error", message: `Posting failed - ${error}` })
+      );
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Fragment>
@@ -242,6 +295,63 @@ const ShowTopic = () => {
                         </Fragment>
                       );
                     })}
+                    {isAuthed ? (
+                      <Grid
+                        item
+                        container
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        xl={12}
+                        className={classes.minFlexBasisStyle}
+                        alignItems="center"
+                      >
+                        <form
+                          className={classes.formContainerStyle}
+                          onSubmit={onSubmit}
+                        >
+                          <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+                            <img
+                              alt="User profile"
+                              src={userObject.img_url}
+                              className={classes.profieImgStyle}
+                            />
+                            <Typography variant="subtitle2">
+                              {userObject.username}
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+                            <TextareaAutosize
+                              rowsMin={10}
+                              rowsMax={10}
+                              value={newPost}
+                              onChange={(newNewPost) =>
+                                setNewPost(newNewPost.target.value)
+                              }
+                              className={classes.bigTextFieldStyle}
+                            />
+                          </Grid>
+                          <Grid
+                            item
+                            xs={2}
+                            sm={2}
+                            md={2}
+                            lg={2}
+                            xl={2}
+                            className={classes.buttonGridStyle}
+                          >
+                            <Button
+                              className={classes.buttonStyle}
+                              type="submit"
+                              disabled={!newPost}
+                            >
+                              Post
+                            </Button>
+                          </Grid>
+                        </form>
+                      </Grid>
+                    ) : null}
                   </Paper>
                 </Grid>
               </Paper>

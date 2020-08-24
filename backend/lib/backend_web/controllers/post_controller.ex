@@ -17,13 +17,14 @@ defmodule BackendWeb.PostController do
             content: post.content,
             is_question: post.is_question,
             topic: %{id: post.topic.id, title: post.topic.title},
-            user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url}
+            user: %{id: post.user.id, username: post.user.username, img_url: post.user.img_url},
+            inserted_at: post.inserted_at
           }
         end)
     )
   end
 
-  def create(conn, %{"post" => post_params}) do
+  def create(conn, post_params) do
     with {:ok, %Post{} = post} <- Posts.create_post(post_params) do
       conn
       |> put_status(:created)
