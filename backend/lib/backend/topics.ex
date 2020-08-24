@@ -71,7 +71,7 @@ defmodule Backend.Topics do
       |> Post.changeset(new_post_map)
       |> Repo.insert()
 
-      preloaded_topic
+      {:ok, preloaded_topic}
     end
   end
 
