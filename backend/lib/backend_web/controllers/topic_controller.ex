@@ -38,8 +38,10 @@ defmodule BackendWeb.TopicController do
     )
   end
 
-  def create(conn, %{"topic" => topic_params}) do
+  def create(conn, topic_params) do
     with {:ok, %Topic{} = topic} <- Topics.create_topic(topic_params) do
+      IO.inspect(topic)
+
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.topic_path(conn, :show, topic))

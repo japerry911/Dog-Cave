@@ -7,6 +7,7 @@ defmodule Backend.Topics do
   alias Backend.Repo
 
   alias Backend.Topics.Topic
+  alias Backend.Posts.Post
 
   @doc """
   Returns the list of topics.
@@ -57,9 +58,21 @@ defmodule Backend.Topics do
 
   """
   def create_topic(attrs \\ %{}) do
-    %Topic{}
-    |> Topic.changeset(attrs)
-    |> Repo.insert()
+    with {:ok, %Topic{} = new_topic} <-
+           %Topic{}
+           |> Topic.changeset(attrs["topic"])
+           |> Repo.insert() do
+      preloaded_topic = Repo.preload(new_topic, [:user, :category, :posts])
+
+      new_post_map = attrs["post"]
+      new_post_map = Map.put(new_post_map, "topic_id", preloaded_topic.id)
+
+      %Post{}
+      |> Post.changeset(new_post_map)
+      |> Repo.insert()
+
+      preloaded_topic
+    end
   end
 
   @doc """

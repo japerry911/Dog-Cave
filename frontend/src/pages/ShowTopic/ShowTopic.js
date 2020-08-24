@@ -43,15 +43,17 @@ const ShowTopic = () => {
           postObject.user,
         ]);
 
-        setShowTopic(response.data.data);
-        setPostsArray(
-          rawPostsArray
-            .filter((postArray) => !postArray[2])
-            .sort((a, b) => {
-              return new Date(a[3]) - new Date(b[3]);
-            })
-        );
-        setQuestionArray(rawPostsArray.find((postArray) => postArray[2]));
+        if (rawPostsArray.length > 0) {
+          setShowTopic(response.data.data);
+          setPostsArray(
+            rawPostsArray
+              .filter((postArray) => !postArray[2])
+              .sort((a, b) => {
+                return new Date(a[3]) - new Date(b[3]);
+              })
+          );
+          setQuestionArray(rawPostsArray.find((postArray) => postArray[2]));
+        }
         setIsLoading(false);
       },
       (error) => {
@@ -192,6 +194,7 @@ const ShowTopic = () => {
                         <img
                           alt="User profile"
                           src={
+                            questionArray !== undefined &&
                             questionArray[5] !== undefined
                               ? questionArray[5].img_url
                               : null
@@ -199,7 +202,8 @@ const ShowTopic = () => {
                           className={classes.profieImgStyle}
                         />
                         <Typography variant="subtitle2">
-                          {questionArray[5] !== undefined
+                          {questionArray !== undefined &&
+                          questionArray[5] !== undefined
                             ? questionArray[5].username
                             : null}
                         </Typography>

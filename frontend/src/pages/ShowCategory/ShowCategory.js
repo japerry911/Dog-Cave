@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import phoenixServer from "../../api/phoenixServer";
 import PostFormDialog from "../../components/PostFormDialog/PostFormDialog";
+import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useStyles } from "./ShowCategoryStyles";
 
@@ -17,6 +18,8 @@ const ShowCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [topicsArray, setTopicsArray] = useState([]);
   const [showCategory, setShowCategory] = useState({});
+
+  const isAuthed = useSelector((state) => state.auth.isAuthed);
 
   useEffect(() => {
     setIsLoading(true);
@@ -112,7 +115,7 @@ const ShowCategory = () => {
                         xl={1}
                         className={classes.headerGridStyle}
                       >
-                        <PostFormDialog />
+                        {isAuthed ? <PostFormDialog /> : null}
                       </Grid>
                       <Grid
                         item

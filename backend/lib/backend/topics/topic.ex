@@ -16,7 +16,7 @@ defmodule Backend.Topics.Topic do
   @doc false
   def changeset(topic, attrs) do
     topic
-    |> cast(attrs, [:title])
-    |> validate_required([:title])
+    |> cast(attrs, [:title, :user_id, :category_id])
+    |> validate_required([:title, :user_id, :category_id])
   end
 end
