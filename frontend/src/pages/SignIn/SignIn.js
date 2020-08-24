@@ -38,8 +38,7 @@ const SignIn = () => {
       dispatch(
         handleOpen({ type: "success", message: `Welcome back ${username}!` })
       );
-      history.push("/profiles/85");
-      //history.push("/forums");
+      history.push("/forums");
     } else {
       dispatch(
         handleOpen({

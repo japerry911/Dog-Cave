@@ -12,6 +12,7 @@ import PostsTab from "../../components/PostsTab/PostsTab";
 import LoadingOverlay from "react-loading-overlay";
 import { handleOpen } from "../../redux/actions/snackbarActions";
 import { useStyles } from "./ProfileStyles";
+import { useParams } from "react-router-dom";
 import ChangePasswordTab from "../../components/ChangePasswordTab/ChangePasswordTab";
 
 const Profile = () => {
@@ -22,8 +23,10 @@ const Profile = () => {
   const token = useSelector((state) => state.auth.token);
   const isLoading = useSelector((state) => state.auth.isLoading);
 
+  const params = useParams();
+
   useEffect(() => {
-    dispatch(getUser(userObject.id, token)).then(
+    dispatch(getUser(params.id, token)).then(
       (response) => {
         if (response) {
           dispatch(
@@ -45,7 +48,7 @@ const Profile = () => {
         dispatch(handleOpen({ type: "error", message: error }));
       }
     );
-  }, [dispatch, userObject.id, token]);
+  }, [dispatch, params.id, token]);
 
   return (
     <Fragment>

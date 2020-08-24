@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import NavToolbar from "../NavToolbar/NavToolbar";
 import NavDrawer from "../NavDrawer/NavDrawer";
-import { withRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ROUTES_ARRAY } from "../../router/routesArray";
 import { useStyles } from "./NavBarStyles";
 
-const NavBar = ({ location }) => {
+const NavBar = () => {
   const classes = useStyles();
+
+  const location = useLocation();
 
   const [drawer, setDrawer] = useState(false);
   const [title, setTitle] = useState("Home");
@@ -35,4 +37,4 @@ const NavBar = ({ location }) => {
   );
 };
 
-export default withRouter(NavBar);
+export default NavBar;
