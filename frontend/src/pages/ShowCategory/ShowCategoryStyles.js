@@ -48,7 +48,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   subPaperStyle: {
     width: "80%",
-    height: "90%",
+    minHeight: "90%",
     padding: "1rem 0",
     backgroundColor: theme.colors.lightGray,
     display: "flex",

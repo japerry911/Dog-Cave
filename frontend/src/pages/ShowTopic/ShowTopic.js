@@ -159,7 +159,8 @@ const ShowTopic = () => {
                       md={12}
                       lg={12}
                       xl={12}
-                      className={classes.minFlexBasisStyle}
+                      className={classes.girdRowHeaderContainerStyle}
+                      justify="center"
                     >
                       <Grid
                         item
@@ -172,7 +173,7 @@ const ShowTopic = () => {
                       >
                         <Typography
                           variant="h3"
-                          className={classes.headerTextLeftStyle}
+                          className={classes.headerTextStyle}
                         >
                           {showTopic.title}
                         </Typography>
@@ -187,8 +188,9 @@ const ShowTopic = () => {
                       md={12}
                       lg={12}
                       xl={12}
-                      className={classes.minFlexBasisStyle}
+                      className={classes.gridRowContainerStyle}
                       alignItems="center"
+                      justify="center"
                     >
                       <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
                         <img
@@ -251,8 +253,9 @@ const ShowTopic = () => {
                             md={12}
                             lg={12}
                             xl={12}
-                            className={classes.minFlexBasisStyle}
+                            className={classes.gridRowContainerStyle}
                             alignItems="center"
+                            justify="center"
                           >
                             <Grid item xs={4} sm={4} md={2} lg={2} xl={2}>
                               <img
@@ -308,7 +311,7 @@ const ShowTopic = () => {
                         md={12}
                         lg={12}
                         xl={12}
-                        className={classes.minFlexBasisStyle}
+                        className={classes.gridRowContainerStyle}
                         alignItems="center"
                       >
                         <form
