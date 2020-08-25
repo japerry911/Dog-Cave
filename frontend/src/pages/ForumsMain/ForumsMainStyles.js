@@ -15,16 +15,15 @@ export const useStyles = makeStyles((theme) => ({
   },
   paperStyle: {
     border: `3pt solid ${theme.palette.secondary.main}`,
-    padding: "3rem 0",
+    padding: "1.5rem 0",
     marginTop: "3rem",
-    height: "55rem",
+    minHeight: "25rem",
     width: "70%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       width: "90%",
     },
@@ -34,11 +33,12 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.colors.lightGray,
   },
   figureStyle: {
-    width: "100%",
+    width: "80%",
     marginBlockStart: 0,
     marginBlockEnd: 0,
     marginInlineStart: 0,
     marginInlineEnd: 0,
+    paddingBottom: "1.5rem",
     [theme.breakpoints.down("sm")]: {
       width: "40%",
     },
@@ -54,23 +54,22 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
     borderRadius: 12,
     [theme.breakpoints.down("sm")]: {
       width: "90%",
     },
   },
   gridItemStyle: {
-    flexBasis: "15%",
+    flexBasis: 0,
   },
   dividerStyle: {
     width: "90%",
     height: "0.25rem",
     backgroundColor: theme.colors.lightBlueGray,
-    marginTop: "0.25rem",
   },
-  minFlexBasisStyle: {
-    flexBasis: "30%",
+  gridRowContainerStyle: {
+    minHeight: "3rem",
+    flexBasis: 0,
   },
   lightDividerStyle: {
     width: "90%",

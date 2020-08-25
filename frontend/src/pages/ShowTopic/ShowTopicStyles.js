@@ -15,18 +15,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   paperStyle: {
     border: `3pt solid ${theme.palette.secondary.main}`,
-    padding: "3rem 0",
+    padding: "1.5rem 0",
     marginTop: "3rem",
-    minHeight: "55rem",
+    minHeight: "25rem",
     width: "70%",
     backgroundColor: theme.palette.primary.main,
     borderRadius: 12,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
-      width: "93%",
+      width: "90%",
     },
   },
   titleStyle: {
@@ -34,11 +33,12 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.colors.lightGray,
   },
   figureStyle: {
-    width: "100%",
+    width: "80%",
     marginBlockStart: 0,
     marginBlockEnd: 0,
     marginInlineStart: 0,
     marginInlineEnd: 0,
+    paddingBottom: "1.5rem",
     [theme.breakpoints.down("sm")]: {
       width: "40%",
     },
@@ -47,47 +47,39 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   subPaperStyle: {
-    width: "90%",
+    width: "80%",
     minHeight: "90%",
-    padding: "1rem",
+    padding: "1rem 0",
     backgroundColor: theme.colors.lightGray,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
     borderRadius: 12,
     [theme.breakpoints.down("sm")]: {
-      padding: "0.5rem",
+      width: "90%",
     },
   },
   gridItemStyle: {
-    flexBasis: "15%",
+    flexBasis: 0,
   },
   dividerStyle: {
-    width: "100%",
+    width: "90%",
     height: "0.25rem",
     backgroundColor: theme.colors.lightBlueGray,
   },
-  minFlexBasisStyle: {
-    flexBasis: "100%",
-    [theme.breakpoints.down("sm")]: {
-      flexBasis: "10%",
-    },
+  girdRowHeaderContainerStyle: {
+    minHeight: "3rem",
+    flexBasis: 0,
+  },
+  gridRowContainerStyle: {
+    minHeight: "10rem",
+    flexBasis: 0,
   },
   lightDividerStyle: {
-    width: "100%",
+    width: "90%",
     height: "0.125rem",
-    [theme.breakpoints.down("sm")]: {
-      margin: "0.5rem 0",
-    },
   },
   headerTextStyle: {
-    textDecoration: "none",
-    fontWeight: "bold",
-    color: "#000",
-  },
-  headerTextLeftStyle: {
-    paddingLeft: "0.75rem",
     textDecoration: "none",
     fontWeight: "bold",
     color: "#000",

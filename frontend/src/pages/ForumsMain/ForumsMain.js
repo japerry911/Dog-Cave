@@ -99,7 +99,7 @@ const ForumsMain = () => {
                       md={12}
                       lg={12}
                       xl={12}
-                      className={classes.minFlexBasisStyle}
+                      className={classes.gridRowContainerStyle}
                       justify="center"
                     >
                       <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
@@ -115,7 +115,7 @@ const ForumsMain = () => {
                           variant="h4"
                           className={classes.headerTextStyle}
                         >
-                          Number of Topics:
+                          # of Topics:
                         </Typography>
                       </Grid>
                       <Divider className={classes.dividerStyle} />
@@ -133,6 +133,7 @@ const ForumsMain = () => {
                             xl={12}
                             justify="center"
                             alignItems="center"
+                            className={classes.gridRowContainerStyle}
                           >
                             <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                               <Typography
