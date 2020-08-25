@@ -27,6 +27,5 @@ backend-*.tar
 # this depending on your deployment strategy.
 /priv/static/
 
-/config/prod.secrets.exs
 
 .env

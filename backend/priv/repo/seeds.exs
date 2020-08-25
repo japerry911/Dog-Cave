@@ -8,6 +8,7 @@
 #     Backend.Repo.insert!(%Backend.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
+#
 # and so on) as they will fail if something goes wrong.
 
 alias Backend.Repo
@@ -26,12 +27,14 @@ Repo.delete_all(User)
 Repo.delete_all(Category)
 
 # Categories Table Population
-category1 = Repo.insert!(%Category{name: "Technology", description: "Description1"})
-category2 = Repo.insert!(%Category{name: "Category 2", description: "Description2"})
-category3 = Repo.insert!(%Category{name: "Category 3", description: "Description3"})
-category4 = Repo.insert!(%Category{name: "Category 4", description: "Description4"})
-category5 = Repo.insert!(%Category{name: "Category 5", description: "Description5"})
-category6 = Repo.insert!(%Category{name: "Category 6", description: "Description6"})
+category1 =
+  Repo.insert!(%Category{name: "Technology", description: "Recent Technology topics, and more"})
+
+category2 = Repo.insert!(%Category{name: "Dog News", description: "Biggest and Newest Dog News"})
+category3 = Repo.insert!(%Category{name: "Sky Talk", description: "Talk about Sky"})
+category4 = Repo.insert!(%Category{name: "Dog Toys", description: "Talk about dog toys"})
+category5 = Repo.insert!(%Category{name: "Dog Treats", description: "Talk about dog treats"})
+category6 = Repo.insert!(%Category{name: "Dog Food", description: "Talk about dog food"})
 
 # Users Table Population
 {_status, user1} =
