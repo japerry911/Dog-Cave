@@ -69,13 +69,17 @@ export const getUser = (id, token) => {
   };
 };
 
-export const signOut = (id) => {
+export const signOut = (token) => {
   return (dispatch) => {
     dispatch(loadingStart());
 
-    return phoenixServer.delete(`/api/sessions/sign-out/${id}`).then(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
+    return phoenixServer
+      .delete("/api/sessions/sign-out", {
+        headers: { authorization: `Bearer ${token}` },
+      })
+      .then(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
   };
 };

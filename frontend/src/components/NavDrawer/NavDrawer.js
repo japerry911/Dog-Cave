@@ -18,6 +18,7 @@ const NavDrawer = ({ open, onClose, setTitle }) => {
   const dispatch = useDispatch();
   const userObject = useSelector((state) => state.auth.user);
   const isAuthed = useSelector((state) => state.auth.isAuthed);
+  const token = useSelector((state) => state.auth.token);
 
   const history = useHistory();
 
@@ -75,7 +76,7 @@ const NavDrawer = ({ open, onClose, setTitle }) => {
               button
               onClick={async () => {
                 try {
-                  await dispatch(signOut(userObject.id));
+                  await dispatch(signOut(token));
                   dispatch(
                     handleOpen({
                       type: "success",
