@@ -61,44 +61,166 @@ category6 = Repo.insert!(%Category{name: "Dog Food", description: "Talk about do
     password: "password"
   })
 
+{_status, user4} =
+  Users.create_user(%{
+    username: "Skylord",
+    img_url:
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/IMG_4580.png",
+    password: "password"
+  })
+
+{_status, user5} =
+  Users.create_user(%{
+    username: "Charlotte",
+    img_url:
+      "https://dog-cave2134912939213.s3.us-east-2.amazonaws.com/ProfilePictures/FF699225-3FAE-42FD-860D-0632064EE63C_1_105_c.jpeg",
+    password: "password"
+  })
+
 # Topics Table Population
 topic1 = Repo.insert!(%Topic{title: "Basic Elixir Question", user: user1, category: category1})
-topic2 = Repo.insert!(%Topic{title: "Topic 2?", user: user2, category: category2})
-topic3 = Repo.insert!(%Topic{title: "Topic 3", user: user3, category: category3})
-topic4 = Repo.insert!(%Topic{title: "Topic 4", user: user1, category: category4})
-topic5 = Repo.insert!(%Topic{title: "Topic 5", user: user2, category: category5})
-topic6 = Repo.insert!(%Topic{title: "Topic 6", user: user3, category: category6})
+
+topic2 =
+  Repo.insert!(%Topic{title: "Which dog breed is the best?", user: user2, category: category2})
+
+topic3 =
+  Repo.insert!(%Topic{title: "What is Sky's favorite treat?", user: user3, category: category3})
+
+topic4 =
+  Repo.insert!(%Topic{title: "What is your favorite dog toy?", user: user1, category: category4})
+
+topic5 =
+  Repo.insert!(%Topic{title: "What's your favorite treat?", user: user2, category: category5})
+
+topic6 =
+  Repo.insert!(%Topic{
+    title: "What's your favorite dog food brand?",
+    user: user3,
+    category: category6
+  })
+
 topic7 = Repo.insert!(%Topic{title: "Phoenix Question", user: user1, category: category1})
-topic8 = Repo.insert!(%Topic{title: "Topic 8", user: user2, category: category2})
-topic9 = Repo.insert!(%Topic{title: "Topic 9", user: user3, category: category3})
-topic10 = Repo.insert!(%Topic{title: "Topic 10", user: user1, category: category4})
-topic11 = Repo.insert!(%Topic{title: "Topic 11", user: user2, category: category5})
-topic12 = Repo.insert!(%Topic{title: "Topic 12", user: user3, category: category6})
+
+topic8 =
+  Repo.insert!(%Topic{title: "New vet opened down the street", user: user2, category: category2})
+
+topic9 =
+  Repo.insert!(%Topic{
+    title: "What is Sky's favorite thing to do?",
+    user: user3,
+    category: category3
+  })
+
+topic10 =
+  Repo.insert!(%Topic{title: "How are Kong Toys nowadays?", user: user1, category: category4})
+
+topic11 =
+  Repo.insert!(%Topic{title: "What do you think of Crunchy Os?", user: user2, category: category5})
+
+topic12 =
+  Repo.insert!(%Topic{
+    title: "How is the bird game food from Fromms?",
+    user: user3,
+    category: category6
+  })
 
 # Posts Table Population
 Repo.insert!(%Post{content: "What is Elixir?", is_question: true, topic: topic1, user: user1})
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 2", is_question: true, topic: topic2, user: user2})
+
+Repo.insert!(%Post{
+  content: "Which dog breed is the best and why?",
+  is_question: true,
+  topic: topic2,
+  user: user2
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 3", is_question: true, topic: topic3, user: user3})
+
+Repo.insert!(%Post{
+  content: "What is Sky's favorite treat?",
+  is_question: true,
+  topic: topic3,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 4", is_question: true, topic: topic4, user: user1})
+
+Repo.insert!(%Post{
+  content: "What is your favorite dog toy?",
+  is_question: true,
+  topic: topic4,
+  user: user1
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 5", is_question: true, topic: topic5, user: user2})
+
+Repo.insert!(%Post{
+  content: "What's your favorite treat?",
+  is_question: true,
+  topic: topic5,
+  user: user2
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 6", is_question: true, topic: topic6, user: user3})
+
+Repo.insert!(%Post{
+  content: "What's your favorite dog food brand?",
+  is_question: true,
+  topic: topic6,
+  user: user3
+})
+
 Process.sleep(1000)
 Repo.insert!(%Post{content: "What is Phoenix?", is_question: true, topic: topic7, user: user1})
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 8", is_question: true, topic: topic8, user: user2})
+
+Repo.insert!(%Post{
+  content:
+    "How is the new vet down the street, just read an article in the newspaper on the opening?",
+  is_question: true,
+  topic: topic8,
+  user: user2
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 9", is_question: true, topic: topic9, user: user3})
+
+Repo.insert!(%Post{
+  content: "What is Sky's favorite thing to do?",
+  is_question: true,
+  topic: topic9,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 10", is_question: true, topic: topic10, user: user1})
+
+Repo.insert!(%Post{
+  content: "How are Kong Toys nowadays?",
+  is_question: true,
+  topic: topic10,
+  user: user1
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 11", is_question: true, topic: topic11, user: user2})
+
+Repo.insert!(%Post{
+  content:
+    "What do you think of Crunchy Os? If you are not familiar with them, they are a great treat from Fromms.",
+  is_question: true,
+  topic: topic11,
+  user: user2
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 12", is_question: true, topic: topic12, user: user3})
+
+Repo.insert!(%Post{
+  content:
+    "How is the bird game food from Fromms? I can't catch any birds in the wild, so I don't know the taste. Thanks.",
+  is_question: true,
+  topic: topic12,
+  user: user3
+})
+
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -110,15 +232,67 @@ Repo.insert!(%Post{
 
 Process.sleep(1000)
 
-Repo.insert!(%Post{content: "Post Content 14", is_question: false, topic: topic2, user: user2})
+Repo.insert!(%Post{
+  content: "Obviously every dog is the best!",
+  is_question: false,
+  topic: topic2,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 15", is_question: false, topic: topic3, user: user3})
+
+Repo.insert!(%Post{
+  content: "He absolutely loves carrot cake.",
+  is_question: false,
+  topic: topic3,
+  user: user5
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 16", is_question: false, topic: topic4, user: user1})
+
+Repo.insert!(%Post{
+  content: "DID SOMEBODY SAY CARROT CAKE?!",
+  is_question: false,
+  topic: topic3,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 17", is_question: false, topic: topic5, user: user2})
+
+Repo.insert!(%Post{
+  content: "I absolutely love a good rope toy and love playing tug-a-war.",
+  is_question: false,
+  topic: topic4,
+  user: user2
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 18", is_question: false, topic: topic6, user: user3})
+
+Repo.insert!(%Post{
+  content: "Do not judge me, but I love carrots.",
+  is_question: false,
+  topic: topic5,
+  user: user4
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "What a nerd, we all know that dog biscuits are the best!",
+  is_question: false,
+  topic: topic5,
+  user: user5
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "I absolutely love Science Diet, it is so tasty and healthy.",
+  is_question: false,
+  topic: topic6,
+  user: user5
+})
+
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -131,15 +305,85 @@ Repo.insert!(%Post{
 
 Process.sleep(1000)
 
-Repo.insert!(%Post{content: "Post Content 20", is_question: false, topic: topic8, user: user2})
+Repo.insert!(%Post{
+  content: "Nerd!!!",
+  is_question: false,
+  topic: topic7,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 21", is_question: false, topic: topic9, user: user3})
+
+Repo.insert!(%Post{
+  content: "I think that's an actual hospital for human people man... You're crazy.",
+  is_question: false,
+  topic: topic8,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 22", is_question: false, topic: topic10, user: user1})
+
+Repo.insert!(%Post{
+  content: "Sky loves to sleep and sleep and sleep.",
+  is_question: false,
+  topic: topic9,
+  user: user1
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 23", is_question: false, topic: topic11, user: user2})
+
+Repo.insert!(%Post{
+  content: "What are you talking about, you're literally always sleeping.",
+  is_question: false,
+  topic: topic9,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 24", is_question: false, topic: topic12, user: user3})
+
+Repo.insert!(%Post{
+  content: "They are still pretty durable, I heard Sky ate one once.",
+  is_question: false,
+  topic: topic10,
+  user: user2
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "That's just not true...",
+  is_question: false,
+  topic: topic10,
+  user: user4
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "Crunchatise me captain!",
+  is_question: false,
+  topic: topic11,
+  user: user5
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "Wrong food. That's Captain Crunch...",
+  is_question: false,
+  topic: topic11,
+  user: user4
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "It's fantastic, had a bowl this morning, highly recommend.",
+  is_question: false,
+  topic: topic12,
+  user: user4
+})
+
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -151,15 +395,51 @@ Repo.insert!(%Post{
 
 Process.sleep(1000)
 
-Repo.insert!(%Post{content: "Post Content 26", is_question: false, topic: topic2, user: user2})
+Repo.insert!(%Post{
+  content: "Obviously Catahoula Leopard! AROOOO!! RUFF RUFF!",
+  is_question: false,
+  topic: topic2,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 27", is_question: false, topic: topic3, user: user3})
+
+Repo.insert!(%Post{
+  content: "Um, no... Cavilier King Charles Spaniel is.",
+  is_question: false,
+  topic: topic2,
+  user: user5
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 28", is_question: false, topic: topic4, user: user1})
+
+Repo.insert!(%Post{
+  content: "He loves to eat grilled chicken last I heard.",
+  is_question: false,
+  topic: topic3,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 29", is_question: false, topic: topic5, user: user2})
+
+Repo.insert!(%Post{
+  content: "I think the best dog toy is... MY TAIL!",
+  is_question: false,
+  topic: topic4,
+  user: user3
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 30", is_question: false, topic: topic6, user: user3})
+Repo.insert!(%Post{content: "I love beef jerky.", is_question: false, topic: topic5, user: user1})
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "Fromm with Chicken Broth!",
+  is_question: false,
+  topic: topic6,
+  user: user4
+})
+
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -172,27 +452,26 @@ Repo.insert!(%Post{
 
 Process.sleep(1000)
 
-Repo.insert!(%Post{content: "Post Content 32", is_question: false, topic: topic8, user: user2})
+Repo.insert!(%Post{
+  content: "OH NO NOT ANOTHER VET!",
+  is_question: false,
+  topic: topic8,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 33", is_question: false, topic: topic9, user: user3})
+
+Repo.insert!(%Post{
+  content: "I love go for walks!",
+  is_question: false,
+  topic: topic9,
+  user: user4
+})
+
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 34", is_question: false, topic: topic10, user: user1})
+Repo.insert!(%Post{content: "Boring as usual.", is_question: false, topic: topic10, user: user5})
 Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 35", is_question: false, topic: topic11, user: user2})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 36", is_question: false, topic: topic12, user: user3})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Wrong Category!!!", is_question: false, topic: topic1, user: user3})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 38", is_question: false, topic: topic2, user: user2})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 39", is_question: false, topic: topic3, user: user3})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 40", is_question: false, topic: topic4, user: user1})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 41", is_question: false, topic: topic5, user: user2})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 42", is_question: false, topic: topic6, user: user3})
+Repo.insert!(%Post{content: "Fantastic", is_question: false, topic: topic11, user: user1})
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -202,17 +481,6 @@ Repo.insert!(%Post{
   user: user1
 })
 
-Process.sleep(1000)
-
-Repo.insert!(%Post{content: "Post Content 44", is_question: false, topic: topic8, user: user2})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 45", is_question: false, topic: topic9, user: user3})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 46", is_question: false, topic: topic10, user: user1})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 47", is_question: false, topic: topic11, user: user2})
-Process.sleep(1000)
-Repo.insert!(%Post{content: "Post Content 48", is_question: false, topic: topic12, user: user3})
 Process.sleep(1000)
 
 Repo.insert!(%Post{
@@ -239,4 +507,13 @@ Repo.insert!(%Post{
   is_question: false,
   topic: topic1,
   user: user2
+})
+
+Process.sleep(1000)
+
+Repo.insert!(%Post{
+  content: "haha! I am eating popcorn while I watch this unfold in Dog-Cave.",
+  is_question: false,
+  topic: topic1,
+  user: user4
 })
