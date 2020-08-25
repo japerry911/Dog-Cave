@@ -77,6 +77,9 @@ export const useStyles = makeStyles((theme) => ({
   lightDividerStyle: {
     width: "100%",
     height: "0.125rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0.5rem 0",
+    },
   },
   headerTextStyle: {
     textDecoration: "none",

@@ -77,17 +77,29 @@ topic12 = Repo.insert!(%Topic{title: "Topic 12", user: user3, category: category
 
 # Posts Table Population
 Repo.insert!(%Post{content: "What is Elixir?", is_question: true, topic: topic1, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 2", is_question: true, topic: topic2, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 3", is_question: true, topic: topic3, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 4", is_question: true, topic: topic4, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 5", is_question: true, topic: topic5, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 6", is_question: true, topic: topic6, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "What is Phoenix?", is_question: true, topic: topic7, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 8", is_question: true, topic: topic8, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 9", is_question: true, topic: topic9, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 10", is_question: true, topic: topic10, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 11", is_question: true, topic: topic11, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 12", is_question: true, topic: topic12, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content: "It is a language I think.",
@@ -96,11 +108,18 @@ Repo.insert!(%Post{
   user: user2
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{content: "Post Content 14", is_question: false, topic: topic2, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 15", is_question: false, topic: topic3, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 16", is_question: false, topic: topic4, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 17", is_question: false, topic: topic5, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 18", is_question: false, topic: topic6, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content:
@@ -110,11 +129,18 @@ Repo.insert!(%Post{
   user: user1
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{content: "Post Content 20", is_question: false, topic: topic8, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 21", is_question: false, topic: topic9, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 22", is_question: false, topic: topic10, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 23", is_question: false, topic: topic11, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 24", is_question: false, topic: topic12, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content: "Elixir is like a potion isn't it? I don't know haha.",
@@ -123,11 +149,18 @@ Repo.insert!(%Post{
   user: user3
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{content: "Post Content 26", is_question: false, topic: topic2, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 27", is_question: false, topic: topic3, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 28", is_question: false, topic: topic4, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 29", is_question: false, topic: topic5, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 30", is_question: false, topic: topic6, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content:
@@ -137,17 +170,30 @@ Repo.insert!(%Post{
   user: user1
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{content: "Post Content 32", is_question: false, topic: topic8, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 33", is_question: false, topic: topic9, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 34", is_question: false, topic: topic10, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 35", is_question: false, topic: topic11, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 36", is_question: false, topic: topic12, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Wrong Category!!!", is_question: false, topic: topic1, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 38", is_question: false, topic: topic2, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 39", is_question: false, topic: topic3, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 40", is_question: false, topic: topic4, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 41", is_question: false, topic: topic5, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 42", is_question: false, topic: topic6, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content: "Top answer is above, nothing to add.",
@@ -156,11 +202,18 @@ Repo.insert!(%Post{
   user: user1
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{content: "Post Content 44", is_question: false, topic: topic8, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 45", is_question: false, topic: topic9, user: user3})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 46", is_question: false, topic: topic10, user: user1})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 47", is_question: false, topic: topic11, user: user2})
+Process.sleep(1000)
 Repo.insert!(%Post{content: "Post Content 48", is_question: false, topic: topic12, user: user3})
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content:
@@ -170,12 +223,16 @@ Repo.insert!(%Post{
   user: user1
 })
 
+Process.sleep(1000)
+
 Repo.insert!(%Post{
   content: "hahahahha General, why are you mad, just post in the right category bro!",
   is_question: false,
   topic: topic1,
   user: user3
 })
+
+Process.sleep(1000)
 
 Repo.insert!(%Post{
   content: "Drama!!!",
