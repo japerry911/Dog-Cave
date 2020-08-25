@@ -19,6 +19,7 @@ Enjoy!
 - Use of all Functional Components
 - Use of lots of React Hooks
 - Amazon S3 Bucket for Storage of Images
+- Heroku for Deployment
 
 ### Navigating to the Application
 
