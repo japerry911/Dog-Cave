@@ -68,3 +68,14 @@ export const getUser = (id, token) => {
       );
   };
 };
+
+export const signOut = (id) => {
+  return (dispatch) => {
+    dispatch(loadingStart());
+
+    return phoenixServer.delete(`/api/sessions/sign-out/${id}`).then(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+  };
+};
