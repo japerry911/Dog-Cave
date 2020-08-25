@@ -39,7 +39,13 @@ defmodule BackendWeb.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
-  plug CORSPlug, origin: "http://localhost:3000"
+
+  plug CORSPlug,
+    origin: [
+      "http://localhost:3000",
+      "https://dog-cave.herokuapp.com",
+      "http://dog-cave.herokuapp.com"
+    ]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],

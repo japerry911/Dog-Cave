@@ -1,5 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "https://dog-cave-backend.herokuapp.com"
+      : "http://localhost:4000",
 });
