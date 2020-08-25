@@ -115,7 +115,7 @@ const ForumsMain = () => {
                           variant="h4"
                           className={classes.headerTextStyle}
                         >
-                          Number of Topics:
+                          # of Topics:
                         </Typography>
                       </Grid>
                       <Divider className={classes.dividerStyle} />

@@ -104,29 +104,19 @@ const ShowCategory = () => {
                       md={12}
                       lg={12}
                       xl={12}
-                      className={classes.minFlexBasisStyle}
+                      className={classes.gridRowContainerStyle}
+                      justify="center"
                     >
                       <Grid
                         item
-                        xs={1}
-                        sm={1}
-                        md={1}
-                        lg={1}
-                        xl={1}
-                        className={classes.headerGridStyle}
+                        xs={6}
+                        sm={6}
+                        md={6}
+                        lg={6}
+                        xl={6}
+                        className={classes.headerFlexGridStyle}
                       >
                         {isAuthed ? <PostFormDialog /> : null}
-                      </Grid>
-                      <Grid
-                        item
-                        xs={8}
-                        sm={8}
-                        md={8}
-                        lg={8}
-                        xl={8}
-                        align="left"
-                        className={classes.headerGridStyle}
-                      >
                         <Typography
                           variant="h4"
                           className={classes.headerTextLeftStyle}
@@ -134,15 +124,7 @@ const ShowCategory = () => {
                           Topic:
                         </Typography>
                       </Grid>
-                      <Grid
-                        item
-                        xs={3}
-                        sm={3}
-                        md={3}
-                        lg={3}
-                        xl={3}
-                        className={classes.headerGridStyle}
-                      >
+                      <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                         <Typography
                           variant="h4"
                           className={classes.headerTextStyle}
@@ -163,17 +145,11 @@ const ShowCategory = () => {
                             md={12}
                             lg={12}
                             xl={12}
-                            className={classes.minFlexBasisStyle}
+                            justify="center"
+                            alignItems="center"
+                            className={classes.gridRowContainerStyle}
                           >
-                            <Grid
-                              item
-                              xs={9}
-                              sm={9}
-                              md={9}
-                              lg={9}
-                              xl={9}
-                              align="left"
-                            >
+                            <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                               <Typography
                                 variant="h6"
                                 className={classes.headerTextStyle}
@@ -183,7 +159,7 @@ const ShowCategory = () => {
                                 {topicArray[1]}
                               </Typography>
                             </Grid>
-                            <Grid item xs={3} sm={3} md={3} lg={3} xl={3}>
+                            <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                               <Typography
                                 variant="h5"
                                 className={classes.headerTextStyle}
@@ -191,7 +167,18 @@ const ShowCategory = () => {
                                 {topicArray[2]}
                               </Typography>
                             </Grid>
-                            <Divider className={classes.lightDividerStyle} />
+                            <Grid
+                              item
+                              container
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              lg={12}
+                              xl={12}
+                              justify="center"
+                            >
+                              <Divider className={classes.lightDividerStyle} />
+                            </Grid>
                           </Grid>
                         </Fragment>
                       );

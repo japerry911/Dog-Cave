@@ -66,7 +66,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "90%",
     height: "0.25rem",
     backgroundColor: theme.colors.lightBlueGray,
-    marginTop: "0.25rem",
   },
   gridRowContainerStyle: {
     minHeight: "3rem",
