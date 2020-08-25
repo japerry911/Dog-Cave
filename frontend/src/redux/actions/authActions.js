@@ -78,8 +78,8 @@ export const signOut = (token) => {
         headers: { authorization: `Bearer ${token}` },
       })
       .then(
-        (response) => console.log(response),
-        (error) => console.log(error)
+        (response) => dispatch(success({ isAuthed: false, user: {} })),
+        (error) => dispatch(error(error))
       );
   };
 };
