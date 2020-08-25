@@ -42,7 +42,7 @@ Visit `https://dog-cave.herokuapp.com`
 
 ### Video Demo
 
-[![Skylord's_Timekeeper_Walkthrough](https://img.youtube.com/vi/ieFLfJX53Ow/0.jpg)](https://www.youtube.com/watch?v=ieFLfJX53Ow)
+[![Dog-Cave Walkthrough](https://img.youtube.com/vi/bXqXe4z9sAk/0.jpg)](https://www.youtube.com/watch?v=bXqXe4z9sAk)
 
 ### Authors
 
